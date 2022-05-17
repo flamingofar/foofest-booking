@@ -1,0 +1,73 @@
+@use "../../../styles/abstracts/variables" as *;
+
+.ticket_info {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-block: 3rem;
+
+	& > div {
+		width: 90%;
+	}
+	div > p {
+		margin-block-end: 1rem;
+	}
+}
+
+.title {
+	margin-block-end: 1rem;
+	color: $primary-color;
+
+	h1 {
+		text-transform: uppercase;
+		font-size: 2.6rem;
+
+		& + p {
+			font-size: 1.5rem;
+			font-weight: bold;
+		}
+	}
+}
+
+figure {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+
+	margin-bottom: 1.5rem;
+
+	& > div {
+		display: grid;
+		grid-template-rows: 1fr 1fr;
+		place-items: center;
+		aspect-ratio: 1/1;
+
+		h5:first-child {
+			place-self: end center;
+		}
+	}
+
+	.regular {
+		border-left: $border-color $border-thickness solid;
+		border-top: $border-color $border-thickness solid;
+		border-bottom: $border-color $border-thickness solid;
+
+		background: #ffffff1e;
+		background: -webkit-radial-gradient(center, #ffffff1e, $blue);
+		background: -moz-radial-gradient(center, #ffffff1e, $blue);
+		background: radial-gradient(ellipse at center, #ffffff1e, $blue);
+	}
+
+	.vip {
+		border: $border-color $border-thickness solid;
+
+		background: #ffffff1e;
+		background: -webkit-radial-gradient(center, #ffffff1e, $orange);
+		background: -moz-radial-gradient(center, #ffffff1e, $orange);
+		background: radial-gradient(ellipse at center, #ffffff1e, $orange);
+	}
+
+	h5 {
+		font-size: 2.5rem;
+	}
+}

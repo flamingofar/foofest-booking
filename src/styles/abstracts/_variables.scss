@@ -1,0 +1,22 @@
+@use "../typography/_typography" as *;
+
+$border-thickness: 1px;
+$border-color: #000000;
+
+$primary-color: #0036f4;
+
+$blue: #708df8a8;
+$orange: #dda396a8;
+
+$bg-color: #ffffff;
+
+$primary-font: $Rakkas;
+
+@mixin border {
+	border-top: $border-thickness solid $border-color;
+	border-left: $border-thickness solid $border-color;
+}
+
+@mixin bottom-border {
+	border-bottom: $border-thickness solid $border-color;
+}

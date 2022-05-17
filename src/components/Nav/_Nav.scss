@@ -1,0 +1,19 @@
+@use "../../styles/abstracts/_variables" as *;
+nav {
+	background: $bg-color;
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem 1rem;
+
+	font-family: $primary-font;
+
+	div {
+		align-self: flex-start;
+		font-size: 2.4rem;
+	}
+
+	p {
+		font-size: 1rem;
+		align-self: flex-end;
+	}
+}

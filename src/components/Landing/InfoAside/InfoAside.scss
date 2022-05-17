@@ -1,0 +1,14 @@
+.info_aside {
+	background-image: url("../../../../public/assets/img/colors.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 20% 50%;
+	display: grid;
+	place-content: center;
+
+	a {
+		font-size: 1.7rem;
+		width: auto;
+		margin-block: 3rem;
+	}
+}

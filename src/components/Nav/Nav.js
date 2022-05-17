@@ -1,7 +1,12 @@
-import React from "react";
+import "./_Nav.scss";
 
 function Nav() {
-	return <div>Nav</div>;
+	return (
+		<nav>
+			<div>FooFest</div>
+			<p>21.06.2022 - 26.06.2022</p>
+		</nav>
+	);
 }
 
 export default Nav;

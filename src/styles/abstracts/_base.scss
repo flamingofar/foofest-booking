@@ -1,0 +1,38 @@
+@use "./_variables" as *;
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+#root {
+	width: 100vw;
+	display: grid;
+	grid-template-rows: auto 1fr;
+	gap: $border-thickness;
+	background: $border-color;
+	padding: $border-thickness * 1.4;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $primary-font;
+}
+
+nav {
+}
+
+main {
+	display: grid;
+	// grid-template-columns: repeat(3, 1fr);
+	gap: $border-thickness;
+
+	& > * {
+		background-color: $bg-color;
+	}
+}
