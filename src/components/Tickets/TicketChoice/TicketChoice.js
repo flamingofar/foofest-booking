@@ -7,9 +7,9 @@ function TicketChoice() {
 			<div>
 				<div>
 					<div>
-						<button>-</button>
+						<button className="choice_btn">-</button>
 						<p>0</p>
-						<button>+</button>
+						<button className="choice_btn">+</button>
 					</div>
 					<div>
 						<p>
@@ -19,9 +19,9 @@ function TicketChoice() {
 				</div>
 				<div>
 					<div>
-						<button>-</button>
+						<button className="choice_btn">-</button>
 						<p>0</p>
-						<button>+</button>
+						<button className="choice_btn">+</button>
 					</div>
 					<div>
 						<p>

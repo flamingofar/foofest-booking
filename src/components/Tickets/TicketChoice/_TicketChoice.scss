@@ -7,10 +7,6 @@
 	p:last-child {
 		color: $text-color;
 	}
-	h2 {
-		text-align: center;
-		font-size: 2rem;
-	}
 
 	& > div {
 		display: flex;
@@ -26,10 +22,5 @@
 			font-size: 1.6rem;
 			padding-inline: 0.5rem;
 		}
-	}
-
-	button {
-		width: 2.3rem;
-		height: auto;
 	}
 }

@@ -1,12 +1,19 @@
 @use "../../styles/abstracts/variables" as *;
 
-p {
-	font-family: $primary-font;
-}
+.tickets-main {
+	h2 {
+		text-align: center;
+		font-size: 2rem;
+	}
 
-form {
-	display: grid;
-	flex-direction: column;
-	align-items: center;
-	background-color: $bg-color;
+	p {
+		font-family: $primary-font;
+	}
+
+	form {
+		display: grid;
+		flex-direction: column;
+		align-items: center;
+		background-color: $bg-color;
+	}
 }

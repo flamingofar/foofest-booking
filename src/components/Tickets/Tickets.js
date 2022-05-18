@@ -17,7 +17,7 @@ function Tickets() {
 	return (
 		<>
 			<Nav />
-			<main>
+			<main className="tickets-main">
 				<div className="title ticket_choice">
 					<h1>FooFest</h1>
 					<p>A festival for everyone</p>
