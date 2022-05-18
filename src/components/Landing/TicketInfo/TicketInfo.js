@@ -1,4 +1,5 @@
 import "./_TicketInfo.scss";
+import { Link } from "react-router-dom";
 
 function TicketInfo() {
 	return (
@@ -20,9 +21,9 @@ function TicketInfo() {
 						<h5>1299,-</h5>
 					</div>
 				</figure>
-				<a className="cta" href="/">
+				<Link className="cta" to={"/tickets"}>
 					Get your ticket now
-				</a>
+				</Link>
 			</div>
 		</section>
 	);
