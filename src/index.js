@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Tickets from "./components/Tickets/Tickets";
 
 import App from "./App";
+import Checkout from "./components/Checkout/Checkout";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,6 +14,7 @@ root.render(
 				<Routes>
 					<Route path="/" element={<App />} />
 					<Route path="/tickets" element={<Tickets />} />
+					<Route path="/checkout" element={<Checkout />} />
 				</Routes>
 			</BrowserRouter>
 		</React.StrictMode>

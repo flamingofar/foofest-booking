@@ -1,8 +1,8 @@
-import "./_ContactInfo.scss";
+import "./_Address.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-function ContactInfo() {
+function Address() {
 	const formik = useFormik({
 		initialValues: {
 			firstName: "",
@@ -20,13 +20,25 @@ function ContactInfo() {
 	});
 	return (
 		<fieldset className="section_p">
-			<h2>Who's placing the order?</h2>
+			<h2>Where do you live?</h2>
 			<div className="input_wrapper">
 				<input
-					type="email"
-					id="email"
-					name="email"
-					placeholder="Email"
+					type="text"
+					id="country"
+					name="country"
+					placeholder="Country"
+					onBlur={formik.handleBlur}
+					onChange={formik.handleChange}
+					value={formik.values.email}
+				/>
+				{formik.touched.email && formik.errors ? <p>{formik.errors.email}</p> : null}
+			</div>
+			<div className="input_wrapper">
+				<input
+					type="text"
+					id="street"
+					name="street"
+					placeholder="Streetname & No."
 					onBlur={formik.handleBlur}
 					onChange={formik.handleChange}
 					value={formik.values.email}
@@ -37,9 +49,9 @@ function ContactInfo() {
 				<div className="input_wrapper">
 					<input
 						type="text"
-						id="firstName"
-						name="firstName"
-						placeholder="First name"
+						id="city"
+						name="city"
+						placeholder="City"
 						onBlur={formik.handleBlur}
 						onChange={formik.handleChange}
 						value={formik.values.firstName}
@@ -49,9 +61,9 @@ function ContactInfo() {
 				<div className="input_wrapper">
 					<input
 						type="text"
-						id="lastName"
-						name="lastName"
-						placeholder="Last name"
+						id="zip"
+						name="zip"
+						placeholder="Zip Code"
 						onBlur={formik.handleBlur}
 						onChange={formik.handleChange}
 						value={formik.values.lastName}
@@ -59,20 +71,8 @@ function ContactInfo() {
 					{formik.touched.lastName && formik.errors ? <p>{formik.errors.lastName}</p> : null}
 				</div>
 			</div>
-			<div className="input_wrapper">
-				<input
-					type="phone"
-					id="phone"
-					name="phone"
-					placeholder="Phone"
-					onBlur={formik.handleBlur}
-					onChange={formik.handleChange}
-					value={formik.values.email}
-				/>
-				{formik.touched.email && formik.errors ? <p>{formik.errors.email}</p> : null}
-			</div>
 		</fieldset>
 	);
 }
 
-export default ContactInfo;
+export default Address;

@@ -1,5 +1,5 @@
 import "./_Tickets.scss";
-
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import Nav from "../Nav/Nav";
@@ -27,6 +27,9 @@ function Tickets() {
 				<Area areaChosen={areaChosen} setAreaChosen={setAreaChosen} />
 				<Guests guestsChosen={guestsChosen} setGuestsChosen={setGuestsChosen} />
 				<TentOptions tentsChosen={tentsChosen} setTentsChosen={setTentsChosen} />
+				<Link to={"/checkout"} className="cta">
+					Checkout
+				</Link>
 			</main>
 		</>
 	);

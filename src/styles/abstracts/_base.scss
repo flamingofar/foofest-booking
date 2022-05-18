@@ -46,6 +46,17 @@ fieldset {
 	border: none;
 }
 
+input {
+	width: inherit;
+	border: none;
+	border-bottom: solid $border-color $border-thickness;
+	padding-block-end: 0.2rem;
+}
+
+.input_wrapper {
+	margin-block-end: 0.8rem;
+}
+
 .section_p {
 	padding: 2rem 1.6rem;
 }
