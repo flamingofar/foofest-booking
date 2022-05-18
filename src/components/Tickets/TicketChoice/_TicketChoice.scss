@@ -1,0 +1,35 @@
+@use "../../../styles/abstracts/variables" as *;
+
+.ticket_choice {
+	display: grid;
+	padding: 2rem 1.6rem;
+	text-align: center;
+	p:last-child {
+		color: $text-color;
+	}
+	h2 {
+		text-align: center;
+		font-size: 2rem;
+	}
+
+	& > div {
+		display: flex;
+		flex-direction: column;
+
+		div {
+			padding-block-start: 1rem;
+			margin-inline-end: 1.5rem;
+
+			display: flex;
+		}
+		p {
+			font-size: 1.6rem;
+			padding-inline: 0.5rem;
+		}
+	}
+
+	button {
+		width: 2.3rem;
+		height: auto;
+	}
+}

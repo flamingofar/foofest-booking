@@ -1,69 +1,33 @@
 import "./_Tickets.scss";
 
-import Nav from "../Nav/Nav";
+import { useState } from "react";
 
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import Nav from "../Nav/Nav";
+import TicketChoice from "./TicketChoice/TicketChoice";
+import Area from "./Area/Area";
+import Guests from "./Guests/Guests";
+import TentOptions from "./TentOptions/TentOptions";
 
 function Tickets() {
-	const formik = useFormik({
-		initialValues: {
-			firstName: "",
-			lastName: "",
-			email: "",
-		},
-		validationSchema: Yup.object({
-			firstName: Yup.string().max(10, "Must be shorter than 10 characters").required("Required"),
-			lastName: Yup.string().max(10, "Must be shorter than 10 characters").required("Required"),
-			email: Yup.string().email().required("Required"),
-		}),
-		onSubmit: () => {
-			console.log(formik.values);
-		},
-	});
+	const [ticketsChosen, setTicketsChosen] = useState(false);
+	const [areaChosen, setAreaChosen] = useState(false);
+	const [guestsChosen, setGuestsChosen] = useState(false);
+	const [tentsChosen, setTentsChosen] = useState(false);
 
 	return (
 		<>
 			<Nav />
-			<form onSubmit={formik.handleSubmit}>
-				<div>
-					<input
-						type="text"
-						id="firstName"
-						name="firstName"
-						placeholder="First name"
-						onBlur={formik.handleBlur}
-						onChange={formik.handleChange}
-						value={formik.values.firstName}
-					/>
-					{formik.touched.firstName && formik.errors ? <p>{formik.errors.firstName}</p> : null}
+			<main>
+				<div className="title ticket_choice">
+					<h1>FooFest</h1>
+					<p>A festival for everyone</p>
+					<p>21.06.2022 - 26.06.2022</p>
 				</div>
-				<div>
-					<input
-						type="text"
-						id="lastName"
-						name="lastName"
-						placeholder="Last name"
-						onBlur={formik.handleBlur}
-						onChange={formik.handleChange}
-						value={formik.values.lastName}
-					/>
-					{formik.touched.lastName && formik.errors ? <p>{formik.errors.lastName}</p> : null}
-				</div>
-				<div>
-					<input
-						type="email"
-						id="email"
-						name="email"
-						placeholder="Email"
-						onBlur={formik.handleBlur}
-						onChange={formik.handleChange}
-						value={formik.values.email}
-					/>
-					{formik.touched.email && formik.errors ? <p>{formik.errors.email}</p> : null}
-				</div>
-				<button type="su mit">Submit</button>
-			</form>
+				<TicketChoice ticketsChosen={ticketsChosen} setTicketsChosen={setTicketsChosen} />
+				<Area areaChosen={areaChosen} setAreaChosen={setAreaChosen} />
+				<Guests guestsChosen={guestsChosen} setGuestsChosen={setGuestsChosen} />
+				<TentOptions tentsChosen={tentsChosen} setTentsChosen={setTentsChosen} />
+			</main>
 		</>
 	);
 }
