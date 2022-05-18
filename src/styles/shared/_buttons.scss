@@ -18,4 +18,8 @@
 .choice_btn {
 	width: 2.3rem;
 	height: 2.3rem;
+
+	background-color: $bg-color;
+
+	border: $border-color ($border-thickness * 2) solid;
 }

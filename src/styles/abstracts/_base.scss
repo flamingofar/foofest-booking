@@ -29,7 +29,8 @@ a {
 	color: $text-color;
 }
 
-nav {
+li {
+	list-style: none;
 }
 
 main {
@@ -39,6 +40,10 @@ main {
 	* {
 		background-color: $bg-color;
 	}
+}
+
+fieldset {
+	border: none;
 }
 
 .section_p {

@@ -1,0 +1,29 @@
+@use "../../../../styles/abstracts/variables" as *;
+.guest {
+	display: flex;
+	margin-block-end: 1.7rem;
+	span {
+		flex: 1;
+		font-family: $primary-font;
+		font-size: 1.8rem;
+	}
+
+	form {
+		flex: 10;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	input {
+		width: inherit;
+		border: none;
+		border-bottom: solid $border-color $border-thickness;
+		padding-block-end: 0.2rem;
+	}
+
+	input:first-child {
+		margin-block-end: 0.8rem;
+	}
+}

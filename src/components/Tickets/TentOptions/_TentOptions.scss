@@ -1,0 +1,17 @@
+.tents {
+	h2 {
+	}
+	fieldset {
+		display: flex;
+		align-items: center;
+		width: 100%;
+	}
+	label {
+		width: inherit;
+		display: flex;
+		justify-content: space-between;
+	}
+	input {
+		margin-inline-end: 0.8rem;
+	}
+}
