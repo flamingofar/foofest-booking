@@ -60,3 +60,23 @@ input {
 .section_p {
 	padding: 2rem 1.6rem;
 }
+
+fieldset {
+	color: $text-color;
+
+	input::placeholder {
+		color: $placeholder-color;
+	}
+}
+
+fieldset:disabled {
+	color: $disabled-color;
+
+	input::placeholder {
+		color: $disabled-color;
+	}
+
+	button {
+		color: $disabled-color;
+	}
+}

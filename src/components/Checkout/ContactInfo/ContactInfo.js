@@ -2,7 +2,12 @@ import "./_ContactInfo.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+import { useContext } from "react";
+import { CheckoutFormContext } from "../../../context/CheckoutForm";
+
 function ContactInfo() {
+	const { setAddressActive } = useContext(CheckoutFormContext);
+
 	const formik = useFormik({
 		initialValues: {
 			firstName: "",

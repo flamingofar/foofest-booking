@@ -1,8 +1,13 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+import { useContext } from "react";
+import { CheckoutFormContext } from "../../../context/CheckoutForm";
+
 import "./_Pay.scss";
 function Pay() {
+	const { payActive } = useContext(CheckoutFormContext);
+
 	const formik = useFormik({
 		initialValues: {
 			firstName: "",
@@ -19,7 +24,7 @@ function Pay() {
 		},
 	});
 	return (
-		<fieldset className="section_p" disabled>
+		<fieldset className="section_p" disabled={payActive ? true : false}>
 			<h2>How are you paying?</h2>
 			<div className="payment">
 				<input type="radio" id="mobilepay" name="payment" defaultChecked />
@@ -74,6 +79,9 @@ function Pay() {
 					{formik.touched.lastName && formik.errors ? <p>{formik.errors.lastName}</p> : null}
 				</div>
 			</div>
+			<button type="submit" className="cta">
+				Pay
+			</button>
 		</fieldset>
 	);
 }

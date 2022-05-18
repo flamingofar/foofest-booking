@@ -2,7 +2,12 @@ import "./_Address.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+import { useContext } from "react";
+import { CheckoutFormContext } from "../../../context/CheckoutForm";
+
 function Address() {
+	const { addressActive, setPayActive } = useContext(CheckoutFormContext);
+
 	const formik = useFormik({
 		initialValues: {
 			firstName: "",
@@ -19,7 +24,7 @@ function Address() {
 		},
 	});
 	return (
-		<fieldset className="section_p">
+		<fieldset id="address" className="section_p" disabled={addressActive ? true : false}>
 			<h2>Where do you live?</h2>
 			<div className="input_wrapper">
 				<input
