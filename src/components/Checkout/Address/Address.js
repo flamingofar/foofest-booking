@@ -24,7 +24,7 @@ function Address() {
 		},
 	});
 	return (
-		<fieldset id="address" className="section_p" disabled={addressActive ? true : false}>
+		<fieldset id="address" className="section_p" disabled={addressActive}>
 			<h2>Where do you live?</h2>
 			<div className="input_wrapper">
 				<input

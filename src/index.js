@@ -1,23 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AvailabilityProvider } from "./context/Availabilty";
+import { OrderProvider } from "./context/Tickets";
 import Tickets from "./components/Tickets/Tickets";
 
 import App from "./App";
 import Checkout from "./components/Checkout/Checkout";
+import Landing from "./components/Landing/Landing";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
-		<React.StrictMode>
-			<BrowserRouter>
-				<Routes>
-					<Route path="/" element={<App />} />
-					<Route path="/tickets" element={<Tickets />} />
-					<Route path="/checkout" element={<Checkout />} />
-				</Routes>
-			</BrowserRouter>
-		</React.StrictMode>
+		<BrowserRouter>
+			<OrderProvider>
+				<AvailabilityProvider>
+					<Routes>
+						<Route path="/" element={<Landing />} />
+						<Route path="/tickets" element={<Tickets />} />
+						<Route path="/checkout" element={<Checkout />} />
+					</Routes>
+				</AvailabilityProvider>
+			</OrderProvider>
+		</BrowserRouter>
 	</React.StrictMode>
 );
 

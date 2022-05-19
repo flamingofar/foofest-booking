@@ -24,7 +24,7 @@ function Pay() {
 		},
 	});
 	return (
-		<fieldset className="section_p" disabled={payActive ? true : false}>
+		<fieldset className="section_p" disabled={payActive}>
 			<h2>How are you paying?</h2>
 			<div className="payment">
 				<input type="radio" id="mobilepay" name="payment" defaultChecked />

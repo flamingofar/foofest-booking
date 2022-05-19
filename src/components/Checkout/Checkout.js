@@ -1,5 +1,4 @@
 import "./_Checkout.scss";
-import { useContext } from "react";
 
 import { CheckoutFormProvider } from "../../context/CheckoutForm";
 

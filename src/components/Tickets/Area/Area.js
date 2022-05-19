@@ -1,16 +1,30 @@
 import SingleArea from "./SingleArea/SingleArea";
+import { useContext } from "react";
+import { AvailabilityContext } from "../../../context/Availabilty";
+import { OrderContext } from "../../../context/Tickets";
 
 import "./Area.scss";
 function Area() {
+	const { availability } = useContext(AvailabilityContext);
+	const { order, setOrder } = useContext(OrderContext);
+
 	return (
 		<section className="section_p">
 			<h2>Where do you want to camp?</h2>
 			<ul>
-				<SingleArea title={"Svartheim"} spots={400} spotsAvai={291} />
-				<SingleArea title={"NilfHeim"} spots={300} spotsAvai={2} />
-				<SingleArea title={"Helheim"} spots={100} spotsAvai={84} />
-				<SingleArea title={"Muspelheim"} spots={200} spotsAvai={61} />
-				<SingleArea title={"Alfheim"} spots={250} spotsAvai={84} />
+				{availability.map((area) => {
+					return (
+						<SingleArea
+							key={area.id}
+							id={area.id}
+							title={area.area}
+							spots={area.spots}
+							spotsAvai={area.available}
+							order={order}
+							setOrder={setOrder}
+						/>
+					);
+				})}
 			</ul>
 		</section>
 	);
