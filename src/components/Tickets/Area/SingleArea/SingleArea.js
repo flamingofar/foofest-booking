@@ -1,14 +1,22 @@
 import "./_SingleArea.scss";
 
-function SingleArea({ title, spots, spotsAvai, order, setOrder, id }) {
+function SingleArea({ title, spots, spotsAvai, order, setOrder }) {
 	const titleS = title.toLowerCase();
+	const areaChoices = Object.values(order.area).reduce((a, b) => a + b);
 
 	const handleArea = (e) => {
 		if (e.target.innerHTML === "-") {
 			if (order.area[titleS] !== 0) {
-				setOrder((prev) => ({ ...prev, area: { ...prev.area, [titleS]: prev.area[titleS] - 1 } }));
+				setOrder((prev) => ({
+					...prev,
+					area: { ...prev.area, [titleS]: prev.area[titleS] - 1 },
+				}));
 			}
 		} else if (e.target.innerHTML === "+") {
+			// If all tickets have been placed on an area we can't incremenet
+			if (areaChoices === order.regular + order.vip) {
+				return;
+			}
 			setOrder((prev) => ({ ...prev, area: { ...prev.area, [titleS]: prev.area[titleS] + 1 } }));
 		}
 	};
