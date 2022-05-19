@@ -7,7 +7,7 @@ export const OrderProvider = ({ children }) => {
 		regular: 0,
 		vip: 0,
 		area: { svartheim: 0, nilfheim: 0, helheim: 0, muspelheim: 0, alfheim: 0 },
-		names: [],
+		guests: [],
 		tentOption: {
 			bringOwn: true,
 			green: null,

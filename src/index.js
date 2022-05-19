@@ -11,19 +11,19 @@ import Landing from "./components/Landing/Landing";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	<React.StrictMode>
-		<BrowserRouter>
-			<OrderProvider>
-				<AvailabilityProvider>
-					<Routes>
-						<Route path="/" element={<Landing />} />
-						<Route path="/tickets" element={<Tickets />} />
-						<Route path="/checkout" element={<Checkout />} />
-					</Routes>
-				</AvailabilityProvider>
-			</OrderProvider>
-		</BrowserRouter>
-	</React.StrictMode>
+	// <React.StrictMode>
+	<BrowserRouter>
+		<OrderProvider>
+			<AvailabilityProvider>
+				<Routes>
+					<Route path="/" element={<Landing />} />
+					<Route path="/tickets" element={<Tickets />} />
+					<Route path="/checkout" element={<Checkout />} />
+				</Routes>
+			</AvailabilityProvider>
+		</OrderProvider>
+	</BrowserRouter>
+	// </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
