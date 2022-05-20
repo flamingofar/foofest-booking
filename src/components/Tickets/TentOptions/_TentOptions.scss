@@ -1,3 +1,4 @@
+@use "../../../styles/abstracts/variables" as *;
 .tents {
 	h2 {
 	}
@@ -13,5 +14,10 @@
 	}
 	input {
 		margin-inline-end: 0.8rem;
+	}
+}
+.tent_choice {
+	fieldset {
+		display: flex;
 	}
 }

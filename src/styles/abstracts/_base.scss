@@ -78,5 +78,16 @@ fieldset:disabled {
 
 	button {
 		color: $disabled-color;
+		border: $disabled-color $border-thickness solid;
+	}
+	strong {
+		color: $disabled-color;
+	}
+}
+
+div:disabled {
+	button {
+		color: $disabled-color;
+		border: $disabled-color $border-thickness solid;
 	}
 }
