@@ -1,6 +1,7 @@
 import "./_TicketChoice.scss";
 import { useContext } from "react";
 import { OrderContext } from "../../../context/Tickets";
+import { v4 as uuidv4 } from "uuid";
 
 function TicketChoice() {
 	const { order, setOrder } = useContext(OrderContext);
@@ -34,7 +35,10 @@ function TicketChoice() {
 			// Adds 1 to regular tickets in order state
 			setOrder((prev) => ({ ...prev, regular: prev.regular + 1 }));
 			// Adds 1 instance of a guest to order state
-			setOrder((prev) => ({ ...prev, guests: [...guests, { name: "", email: "", vip: false }] }));
+			setOrder((prev) => ({
+				...prev,
+				guests: [...guests, { id: uuidv4(), name: "", email: "", vip: false }],
+			}));
 		}
 	};
 	const handleVIP = (e) => {
@@ -63,7 +67,10 @@ function TicketChoice() {
 			// Adds 1 to VIP ticket in order state
 			setOrder((prev) => ({ ...prev, vip: prev.vip + 1 }));
 			// Adds 1 instance of a VIP guest to order state
-			setOrder((prev) => ({ ...prev, guests: [...guests, { name: "", email: "", vip: true }] }));
+			setOrder((prev) => ({
+				...prev,
+				guests: [...guests, { id: uuidv4(), name: "", email: "", vip: true }],
+			}));
 		}
 	};
 
