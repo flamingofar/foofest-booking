@@ -4,6 +4,14 @@
 	display: grid;
 	padding: 2rem 1.6rem;
 	text-align: center;
+
+	.ticket_number {
+		text-align: center;
+		display: inline-block;
+		width: 1.9rem;
+		font-size: 1.5rem;
+	}
+
 	p:last-child {
 		color: $text-color;
 	}
@@ -19,7 +27,7 @@
 			display: flex;
 		}
 		p {
-			font-size: 1.6rem;
+			font-size: 1.5rem;
 			padding-inline: 0.5rem;
 		}
 	}

@@ -83,7 +83,7 @@ function TicketChoice() {
 						<button className="choice_btn" onClick={handleRegular}>
 							-
 						</button>
-						<p>{order.regular}</p>
+						<p className="ticket_number">{order.regular}</p>
 						<button className="choice_btn" onClick={handleRegular}>
 							+
 						</button>
@@ -99,7 +99,7 @@ function TicketChoice() {
 						<button className="choice_btn" onClick={handleVIP}>
 							-
 						</button>
-						<p>{order.vip}</p>
+						<p className="ticket_number">{order.vip}</p>
 						<button className="choice_btn" onClick={handleVIP}>
 							+
 						</button>

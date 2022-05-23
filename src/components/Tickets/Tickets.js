@@ -1,6 +1,7 @@
 import "./_Tickets.scss";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { TentsProvider } from "../../context/Tents";
 
 import Nav from "../Nav/Nav";
 import TicketChoice from "./TicketChoice/TicketChoice";
@@ -23,10 +24,12 @@ function Tickets() {
 					<p>A festival for everyone</p>
 					<p>21.06.2022 - 26.06.2022</p>
 				</div>
-				<TicketChoice ticketsChosen={ticketsChosen} setTicketsChosen={setTicketsChosen} />
-				<Area areaChosen={areaChosen} setAreaChosen={setAreaChosen} />
-				<Guests guestsChosen={guestsChosen} setGuestsChosen={setGuestsChosen} />
-				<TentOptions tentsChosen={tentsChosen} setTentsChosen={setTentsChosen} />
+				<TentsProvider>
+					<TicketChoice ticketsChosen={ticketsChosen} setTicketsChosen={setTicketsChosen} />
+					<Area areaChosen={areaChosen} setAreaChosen={setAreaChosen} />
+					<Guests guestsChosen={guestsChosen} setGuestsChosen={setGuestsChosen} />
+					<TentOptions tentsChosen={tentsChosen} setTentsChosen={setTentsChosen} />
+				</TentsProvider>
 				<Link to={"/checkout"} className="cta">
 					Checkout
 				</Link>

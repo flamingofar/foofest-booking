@@ -61,6 +61,10 @@ input {
 	padding: 2rem 1.6rem;
 }
 
+.tent_option:disabled h2 {
+	background-color: $disabled-color;
+}
+
 fieldset {
 	color: $text-color;
 
