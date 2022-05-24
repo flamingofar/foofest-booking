@@ -1,30 +1,7 @@
-import { useFormik } from "formik";
-import * as Yup from "yup";
-
-import { useContext } from "react";
-import { CheckoutFormContext } from "../../../context/CheckoutForm";
-
 import "./_Pay.scss";
-function Pay() {
-	const { payActive } = useContext(CheckoutFormContext);
-
-	const formik = useFormik({
-		initialValues: {
-			firstName: "",
-			lastName: "",
-			email: "",
-		},
-		validationSchema: Yup.object({
-			firstName: Yup.string().max(10, "Must be shorter than 10 characters").required("Required"),
-			lastName: Yup.string().max(10, "Must be shorter than 10 characters").required("Required"),
-			email: Yup.string().email().required("Required"),
-		}),
-		onSubmit: () => {
-			console.log(formik.values);
-		},
-	});
+function Pay({ formik }) {
 	return (
-		<fieldset className="section_p" disabled={payActive}>
+		<fieldset className="section_p">
 			<h2>How are you paying?</h2>
 			<div className="payment">
 				<input type="radio" id="mobilepay" name="payment" defaultChecked />
@@ -48,9 +25,9 @@ function Pay() {
 					placeholder="Card Number"
 					onBlur={formik.handleBlur}
 					onChange={formik.handleChange}
-					value={formik.values.email}
+					value={formik.values.cardnumber}
 				/>
-				{formik.touched.email && formik.errors ? <p>{formik.errors.email}</p> : null}
+				{formik.touched.cardnumber && formik.errors ? <p>{formik.errors.cardnumber}</p> : null}
 			</div>
 
 			<div className="double_input">
@@ -62,9 +39,9 @@ function Pay() {
 						placeholder="Exp. Date"
 						onBlur={formik.handleBlur}
 						onChange={formik.handleChange}
-						value={formik.values.firstName}
+						value={formik.values.exp}
 					/>
-					{formik.touched.firstName && formik.errors ? <p>{formik.errors.firstName}</p> : null}
+					{formik.touched.exp && formik.errors ? <p>{formik.errors.exp}</p> : null}
 				</div>
 				<div className="input_wrapper">
 					<input
@@ -74,12 +51,12 @@ function Pay() {
 						placeholder="CVC"
 						onBlur={formik.handleBlur}
 						onChange={formik.handleChange}
-						value={formik.values.lastName}
+						value={formik.values.cvc}
 					/>
-					{formik.touched.lastName && formik.errors ? <p>{formik.errors.lastName}</p> : null}
+					{formik.touched.cvc && formik.errors ? <p>{formik.errors.cvc}</p> : null}
 				</div>
 			</div>
-			<button type="submit" className="cta">
+			<button type="submit" className="cta" disabled={formik.isValid}>
 				Pay
 			</button>
 		</fieldset>

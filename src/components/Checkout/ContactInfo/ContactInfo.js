@@ -1,28 +1,19 @@
 import "./_ContactInfo.scss";
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import { useEffect } from "react";
 
 import { useContext } from "react";
 import { CheckoutFormContext } from "../../../context/CheckoutForm";
 
-function ContactInfo() {
-	const { setAddressActive } = useContext(CheckoutFormContext);
+function ContactInfo({ formik }) {
+	const { setAdressActive } = useContext(CheckoutFormContext);
 
-	const formik = useFormik({
-		initialValues: {
-			firstName: "",
-			lastName: "",
-			email: "",
-		},
-		validationSchema: Yup.object({
-			firstName: Yup.string().max(10, "Must be shorter than 10 characters").required("Required"),
-			lastName: Yup.string().max(10, "Must be shorter than 10 characters").required("Required"),
-			email: Yup.string().email().required("Required"),
-		}),
-		onSubmit: () => {
-			console.log(formik.values);
-		},
-	});
+	useEffect(() => {
+		formik.isValid = false;
+		formik.isValid ? setAdressActive(true) : setAdressActive(false);
+
+		console.log(formik);
+	}, [formik]);
+
 	return (
 		<fieldset className="section_p">
 			<h2>Who's placing the order?</h2>
@@ -72,7 +63,7 @@ function ContactInfo() {
 					placeholder="Phone"
 					onBlur={formik.handleBlur}
 					onChange={formik.handleChange}
-					value={formik.values.email}
+					value={formik.values.phone}
 				/>
 				{formik.touched.email && formik.errors ? <p>{formik.errors.email}</p> : null}
 			</div>

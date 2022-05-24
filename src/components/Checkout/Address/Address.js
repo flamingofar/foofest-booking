@@ -1,30 +1,8 @@
 import "./_Address.scss";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 
-import { useContext } from "react";
-import { CheckoutFormContext } from "../../../context/CheckoutForm";
-
-function Address() {
-	const { addressActive, setPayActive } = useContext(CheckoutFormContext);
-
-	const formik = useFormik({
-		initialValues: {
-			firstName: "",
-			lastName: "",
-			email: "",
-		},
-		validationSchema: Yup.object({
-			firstName: Yup.string().max(10, "Must be shorter than 10 characters").required("Required"),
-			lastName: Yup.string().max(10, "Must be shorter than 10 characters").required("Required"),
-			email: Yup.string().email().required("Required"),
-		}),
-		onSubmit: () => {
-			console.log(formik.values);
-		},
-	});
+function Address({ formik }) {
 	return (
-		<fieldset id="address" className="section_p" disabled={addressActive}>
+		<fieldset id="address" className="section_p">
 			<h2>Where do you live?</h2>
 			<div className="input_wrapper">
 				<input
@@ -34,9 +12,9 @@ function Address() {
 					placeholder="Country"
 					onBlur={formik.handleBlur}
 					onChange={formik.handleChange}
-					value={formik.values.email}
+					value={formik.values.country}
 				/>
-				{formik.touched.email && formik.errors ? <p>{formik.errors.email}</p> : null}
+				{formik.touched.country && formik.errors ? <p>{formik.errors.country}</p> : null}
 			</div>
 			<div className="input_wrapper">
 				<input
@@ -46,9 +24,9 @@ function Address() {
 					placeholder="Streetname & No."
 					onBlur={formik.handleBlur}
 					onChange={formik.handleChange}
-					value={formik.values.email}
+					value={formik.values.street}
 				/>
-				{formik.touched.email && formik.errors ? <p>{formik.errors.email}</p> : null}
+				{formik.touched.street && formik.errors ? <p>{formik.errors.street}</p> : null}
 			</div>
 			<div className="double_input">
 				<div className="input_wrapper">
@@ -59,9 +37,9 @@ function Address() {
 						placeholder="City"
 						onBlur={formik.handleBlur}
 						onChange={formik.handleChange}
-						value={formik.values.firstName}
+						value={formik.values.city}
 					/>
-					{formik.touched.firstName && formik.errors ? <p>{formik.errors.firstName}</p> : null}
+					{formik.touched.city && formik.errors ? <p>{formik.errors.city}</p> : null}
 				</div>
 				<div className="input_wrapper">
 					<input
@@ -71,9 +49,9 @@ function Address() {
 						placeholder="Zip Code"
 						onBlur={formik.handleBlur}
 						onChange={formik.handleChange}
-						value={formik.values.lastName}
+						value={formik.values.zip}
 					/>
-					{formik.touched.lastName && formik.errors ? <p>{formik.errors.lastName}</p> : null}
+					{formik.touched.zip && formik.errors ? <p>{formik.errors.zip}</p> : null}
 				</div>
 			</div>
 		</fieldset>
