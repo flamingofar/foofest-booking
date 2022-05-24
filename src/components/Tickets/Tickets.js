@@ -1,7 +1,8 @@
 import "./_Tickets.scss";
 import { Link } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TentsProvider } from "../../context/Tents";
+import { OrderContext } from "../../context/Tickets";
 
 import Nav from "../Nav/Nav";
 import TicketChoice from "./TicketChoice/TicketChoice";
@@ -10,11 +11,24 @@ import Guests from "./Guests/Guests";
 import TentOptions from "./TentOptions/TentOptions";
 
 function Tickets() {
-	const [ticketsChosen, setTicketsChosen] = useState(false);
-	const [areaChosen, setAreaChosen] = useState(false);
-	const [guestsChosen, setGuestsChosen] = useState(false);
-	const [tentsChosen, setTentsChosen] = useState(false);
+	const { order } = useContext(OrderContext);
+	const [linkActive, setLinkActive] = useState(false);
 
+	const totalOrder = order.crewTents.twoPerson + order.crewTents.threePerson;
+
+	useEffect(() => {
+		if (order.tentOption.bringOwn && order.guests.length >= 1) {
+			console.log("first");
+			setLinkActive(true);
+		} else if (order.crewTents.twoPerson + order.crewTents.threePerson === order.guests.length) {
+			console.log("second");
+			setLinkActive(true);
+		} else {
+			console.log("false");
+			setLinkActive(false);
+		}
+		console.log(totalOrder);
+	}, [order.tentOption.bringOwn, JSON.stringify(order.crewTents)]);
 	return (
 		<>
 			<Nav />
@@ -25,12 +39,12 @@ function Tickets() {
 					<p>21.06.2022 - 26.06.2022</p>
 				</div>
 				<TentsProvider>
-					<TicketChoice ticketsChosen={ticketsChosen} setTicketsChosen={setTicketsChosen} />
-					<Area areaChosen={areaChosen} setAreaChosen={setAreaChosen} />
-					<Guests guestsChosen={guestsChosen} setGuestsChosen={setGuestsChosen} />
-					<TentOptions tentsChosen={tentsChosen} setTentsChosen={setTentsChosen} />
+					<TicketChoice />
+					<Area />
+					<Guests />
+					<TentOptions />
 				</TentsProvider>
-				<Link to={"/checkout"} className="cta">
+				<Link to={"/checkout"} className={`cta ${linkActive ? "" : "link-disabled"}`}>
 					Checkout
 				</Link>
 			</main>

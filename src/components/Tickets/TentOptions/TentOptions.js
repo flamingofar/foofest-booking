@@ -13,9 +13,6 @@ function TentOptions() {
 	//Used for setting tent options to be or not disabled
 	const [guestsValid, setGuestsValid] = useState(true);
 
-	const [twoTentsDisabled, setTwoTentsDisabled] = useState(false);
-	const [threeTentsDisabled, setThreeTentsDisabled] = useState(true);
-
 	const [tentsToChoose, setTentsToChoose] = useState(0);
 
 	const totalTickets = order.guests.length;
@@ -40,7 +37,7 @@ function TentOptions() {
 
 			return newOrder;
 		});
-	}, [JSON.stringify(order.guests)]);
+	}, [JSON.stringify(order.guests), order.tentOption.bringOwn]);
 
 	const handleTwoPersonTent = (e) => {
 		switch (e.target.innerHTML) {
@@ -59,6 +56,7 @@ function TentOptions() {
 				break;
 			case "+":
 				if (totalTickets !== totalTentsChosen) {
+					console.log(order.crewTents.twoPerson % 2);
 					setOrder((prev) => {
 						const newOrder = { ...prev };
 						newOrder.crewTents = {
@@ -112,27 +110,17 @@ function TentOptions() {
 
 	//? Crew Setup tent choices
 	useEffect(() => {
-		const checkTentOptions = (total) => {
-			let remainder = total % 3;
+		setOrder((prev) => {
+			const newOrder = { ...prev };
+			// newOrder.guests[guestIdx] = { ...newOrder.guests[guestIdx], email: e.target.value };
+			newOrder.tentOption =
+				tentOptions.values.tent_option === "own"
+					? { ...newOrder.tentOption, bringOwn: true }
+					: { ...newOrder.tentOption, bringOwn: false };
 
-			if (total <= 3) {
-				if (remainder > 0) {
-					setThreeTentsDisabled(true);
-					console.log(remainder);
-					console.log("Can only choose 2's");
-				} else if (remainder <= 0) {
-					setThreeTentsDisabled(false);
-
-					console.log(remainder);
-					console.log("Can still choose 3's");
-				}
-			} else {
-				console.log("Everything is fine");
-			}
-		};
-
-		checkTentOptions(tentsToChoose);
-	}, [[JSON.stringify(order.guests)], order.crewTents.twoPerson, order.crewTents.threePerson]);
+			return newOrder;
+		});
+	}, [tentOptions.values.tent_option]);
 	// order.crewTents.twoPerson, order.crewTents.threePerson
 
 	//? Set green camping to what the user chooses
@@ -223,7 +211,7 @@ function TentOptions() {
 						<strong>2 person tent 299,-</strong>
 					</p>
 				</fieldset>
-				<fieldset disabled={threeTentsDisabled}>
+				<fieldset disabled={tentOptions.values.tent_option === "own" ? true : false}>
 					<button className="choice_btn" onClick={handleThreePersonTent}>
 						-
 					</button>

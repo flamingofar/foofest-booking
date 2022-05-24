@@ -12,7 +12,6 @@ export const OrderProvider = ({ children }) => {
 		guests: [],
 		tentOption: {
 			bringOwn: true,
-			crewSetup: false,
 			green: null,
 			twoPersonPrice: 299,
 			threePersonPrice: 399,
