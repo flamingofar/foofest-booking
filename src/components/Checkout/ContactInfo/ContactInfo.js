@@ -1,19 +1,6 @@
 import "./_ContactInfo.scss";
-import { useEffect } from "react";
-
-import { useContext } from "react";
-import { CheckoutFormContext } from "../../../context/CheckoutForm";
 
 function ContactInfo({ formik }) {
-	const { setAdressActive } = useContext(CheckoutFormContext);
-
-	useEffect(() => {
-		formik.isValid = false;
-		formik.isValid ? setAdressActive(true) : setAdressActive(false);
-
-		console.log(formik);
-	}, [formik]);
-
 	return (
 		<fieldset className="section_p">
 			<h2>Who's placing the order?</h2>

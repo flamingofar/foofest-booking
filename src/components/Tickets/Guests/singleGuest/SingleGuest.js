@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { OrderContext } from "../../../../context/Tickets";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+
 import "./_SingleGuest.scss";
 function SingleGuest({ number, ticket, id }) {
 	const guest = useFormik({
@@ -26,7 +27,7 @@ function SingleGuest({ number, ticket, id }) {
 		const handleNameInput = () => {
 			setOrder((prev) => {
 				const newOrder = { ...prev };
-				// newOrder.guests[guestIdx] = { ...newOrder.guests[guestIdx], name: e.target.value };
+
 				newOrder.guests[guestIdx] = { ...newOrder.guests[guestIdx], name: guest.values.name };
 
 				return newOrder;
@@ -39,7 +40,7 @@ function SingleGuest({ number, ticket, id }) {
 		const handleEmailInput = () => {
 			setOrder((prev) => {
 				const newOrder = { ...prev };
-				// newOrder.guests[guestIdx] = { ...newOrder.guests[guestIdx], email: e.target.value };
+
 				newOrder.guests[guestIdx] = { ...newOrder.guests[guestIdx], email: guest.values.email };
 
 				return newOrder;
@@ -51,7 +52,7 @@ function SingleGuest({ number, ticket, id }) {
 	useEffect(() => {
 		setOrder((prev) => {
 			const newOrder = { ...prev };
-			// newOrder.guests[guestIdx] = { ...newOrder.guests[guestIdx], name: e.target.value };
+
 			newOrder.guests[guestIdx] = { ...newOrder.guests[guestIdx], isValid: guest.isValid };
 
 			return newOrder;

@@ -8,7 +8,7 @@ export const OrderProvider = ({ children }) => {
 		regularPrice: 799,
 		vip: 0,
 		vipPrice: 1299,
-		area: { svartheim: 0, nilfheim: 0, helheim: 0, muspelheim: 0, alfheim: 0 },
+		area: "",
 		guests: [],
 		tentOption: {
 			bringOwn: true,

@@ -1,7 +1,35 @@
 import "./_TicketTimer.scss";
+// import { useEffect, useState } from "react";
+import Countdown, { zeroPad } from "react-countdown";
 
-function TicketTimer() {
-	return <div className="timer"> 9:35 minutter tilbage</div>;
+function TicketTimer({ timeStamp, setTimeoutDone, timeoutDone }) {
+	// Random component
+	const Completionist = () => <span>You are good to go!</span>;
+
+	// Renderer callback with condition
+	const countdown = ({ minutes, seconds, completed }) => {
+		if (completed) {
+			setTimeoutDone(true);
+			return <span>Time Left: 00:00</span>;
+		} else {
+			// Render a countdown
+			return (
+				<span>
+					Time Left: {zeroPad(minutes)}:{zeroPad(seconds)}
+				</span>
+			);
+		}
+	};
+	return (
+		<div className="timer">
+			<Countdown
+				className="timerCountdown"
+				zeroPadTime={2}
+				date={Date.now() + 5000}
+				renderer={countdown}
+			/>
+		</div>
+	);
 }
 
 export default TicketTimer;

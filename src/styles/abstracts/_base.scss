@@ -96,7 +96,7 @@ div:disabled {
 	}
 }
 
-.cta.link-disabled {
+.disabled {
 	color: $disabled-color;
 	border: $disabled-color $border-thickness solid;
 	pointer-events: none;

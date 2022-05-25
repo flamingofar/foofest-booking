@@ -1,0 +1,33 @@
+@use "../../../styles/abstracts/variables" as *;
+
+.modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.585);
+
+	display: grid;
+	place-content: center;
+
+	& > div {
+		width: 80vw;
+		border: $border-color ($border-thickness * 2) solid;
+		padding: 1rem;
+		& > div:first-child {
+			font-size: 2rem;
+			text-align: center;
+		}
+		& > div:last-child {
+			display: flex;
+			gap: 0.3rem;
+		}
+	}
+
+	a {
+		font-size: 1.5rem;
+	}
+}
