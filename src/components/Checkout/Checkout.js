@@ -2,6 +2,7 @@ import "./_Checkout.scss";
 
 import { CheckoutFormProvider } from "../../context/CheckoutForm";
 
+import { useNavigate } from "react-router-dom";
 import { useEffect, useContext, useState } from "react";
 import { OrderContext } from "../../context/Tickets";
 
@@ -16,9 +17,12 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 function Checkout() {
+	const navigate = useNavigate();
 	const { order, setOrder } = useContext(OrderContext);
 	const [time, setTime] = useState(240000);
 	const [timeoutDone, setTimeoutDone] = useState(false);
+	const [reservationNr, setReservationNr] = useState("");
+	const [response, setResponse] = useState("");
 
 	const formik = useFormik({
 		initialValues: {
@@ -54,8 +58,34 @@ function Checkout() {
 		}),
 		onSubmit: () => {
 			console.log(formik.values);
+			const body = {
+				id: reservationNr,
+			};
+
+			const fullfillReservation = async () => {
+				const settings = await fetch("https://foofest-bananas.herokuapp.com/fullfill-reservation", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(body),
+				});
+				const response = await settings.json();
+				console.log(response);
+				await setResponse(response.message);
+			};
+			fullfillReservation();
 		},
 	});
+
+	useEffect(() => {
+		if (response === "Reservation completed") {
+			setResponse("");
+			navigate("/confirmation");
+		} else {
+			console.log("NOPE");
+		}
+	}, [response]);
 
 	useEffect(() => {
 		const body = {
@@ -89,7 +119,7 @@ function Checkout() {
 				body: JSON.stringify(body),
 			});
 			const response = await reservation.json();
-			console.log(response);
+			await setReservationNr(response.id);
 		};
 
 		setSettings();

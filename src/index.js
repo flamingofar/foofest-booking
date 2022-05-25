@@ -8,6 +8,7 @@ import Tickets from "./components/Tickets/Tickets";
 import App from "./App";
 import Checkout from "./components/Checkout/Checkout";
 import Landing from "./components/Landing/Landing";
+import Confirmation from "./components/Checkout/Confirmation/Confirmation";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -19,6 +20,7 @@ root.render(
 					<Route path="/" element={<Landing />} />
 					<Route path="/tickets" element={<Tickets />} />
 					<Route path="/checkout" element={<Checkout />} />
+					<Route path="/confirmation" element={<Confirmation />} />
 				</Routes>
 			</AvailabilityProvider>
 		</OrderProvider>

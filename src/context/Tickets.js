@@ -13,17 +13,14 @@ export const OrderProvider = ({ children }) => {
 		tentOption: {
 			bringOwn: true,
 			green: null,
-			twoPersonPrice: 299,
-			threePersonPrice: 399,
 		},
 		crewTents: {
 			twoPerson: 0,
-			twoPersonPrice: 0,
+			twoPersonPrice: 299,
 			threePerson: 0,
-			threePersonPrice: 0,
+			threePersonPrice: 399,
 			bookingfee: 99,
 		},
-		sum: 0,
 	});
 
 	const value = {

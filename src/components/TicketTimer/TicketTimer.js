@@ -25,7 +25,7 @@ function TicketTimer({ timeStamp, setTimeoutDone, timeoutDone }) {
 			<Countdown
 				className="timerCountdown"
 				zeroPadTime={2}
-				date={Date.now() + 5000}
+				date={Date.now() + timeStamp}
 				renderer={countdown}
 			/>
 		</div>
