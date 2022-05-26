@@ -17,6 +17,39 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 function Checkout() {
+	const test = {
+		reservationNr: 22,
+		area: "tissemand",
+		vip: 2,
+		regular: 2,
+		guests: [
+			{ name: "hej", email: "hej@@" },
+			{ name: "hej", email: "hej@@" },
+		],
+		greenCamping: false,
+		bringOwn: false,
+		crewTwoPerson: 1,
+		crewThreePerson: 3,
+	};
+
+	const saveBooking = async (booking) => {
+		const JSONData = await fetch("https://cocktails-2d4e.restdb.io/rest/foofest", {
+			async: true,
+			crossDomain: true,
+			url: "https://cocktails-2d4e.restdb.io/rest/foofest",
+			method: "post",
+			body: JSON.stringify(booking),
+			headers: {
+				"content-type": "application/json",
+				"x-apikey": "6138eab743cedb6d1f97ee7b",
+				"cache-control": "no-cache",
+			},
+		});
+
+		const res = await JSONData.json();
+		console.log(res);
+	};
+
 	const navigate = useNavigate();
 	const { order, setOrder } = useContext(OrderContext);
 	const [time, setTime] = useState(240000);
@@ -124,6 +157,20 @@ function Checkout() {
 
 		setSettings();
 		putReservation();
+		saveBooking({
+			reservationNr: 22,
+			area: "tissemand",
+			vip: 2,
+			regular: 2,
+			guests: [
+				{ name: "hej", email: "hej@@" },
+				{ name: "hej", email: "hej@@" },
+			],
+			greenCamping: false,
+			bringOwn: false,
+			crewTwoPerson: 1,
+			crewThreePerson: 3,
+		});
 	}, []);
 
 	return (
