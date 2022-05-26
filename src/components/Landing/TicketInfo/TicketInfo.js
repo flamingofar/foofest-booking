@@ -8,8 +8,8 @@ function TicketInfo() {
 				<div className="title">
 					<h1>FooFest</h1>
 					<p>A festival for everyone</p>
+					<p>21.06.2022 - 26.06.2022</p>
 				</div>
-				<p>21.06.2022 - 26.06.2022</p>
 
 				<figure>
 					<div className="regular">

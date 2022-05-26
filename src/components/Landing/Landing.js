@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AvailabilityContext } from "../../context/Availabilty";
 
 import LineUp from "./LineUp/LineUp";
@@ -8,6 +8,7 @@ import Nav from "../Nav/Nav";
 
 function Landing() {
 	const { availability, setAvailability } = useContext(AvailabilityContext);
+	const [lineUp, setLineUp] = useState([]);
 
 	useEffect(() => {
 		const getAvailability = async () => {
@@ -18,6 +19,16 @@ function Landing() {
 			setAvailability(spots);
 		};
 		getAvailability();
+
+		const getLineup = async () => {
+			const JSON = await fetch("https://foofest-bananas.herokuapp.com/bands");
+			const bandsData = await JSON.json();
+			const bands = await bandsData;
+
+			setLineUp(bands);
+		};
+
+		getLineup();
 	}, []);
 
 	return (
@@ -25,7 +36,7 @@ function Landing() {
 			<Nav />
 			<main>
 				<TicketInfo />
-				<LineUp />
+				<LineUp lineUp={lineUp} />
 				<InfoAside />
 			</main>
 		</>

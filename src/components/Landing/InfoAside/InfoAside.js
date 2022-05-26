@@ -2,9 +2,10 @@ import "./InfoAside.scss";
 function InfoAside() {
 	return (
 		<section className="info_aside">
-			<a href="/" className="cta">
-				Check out Schedule
-			</a>
+			<div>
+				<p>foofest@festival.dk</p>
+				<p>+45 66660000</p>
+			</div>
 		</section>
 	);
 }

@@ -1,4 +1,5 @@
 @use "../../styles/abstracts/_variables" as *;
+@use "../../styles/abstracts/mixins";
 nav {
 	background: $bg-color;
 	display: flex;
@@ -15,5 +16,9 @@ nav {
 	p {
 		font-size: 1rem;
 		align-self: flex-end;
+	}
+
+	@include mixins.md {
+		height: 5.56rem;
 	}
 }

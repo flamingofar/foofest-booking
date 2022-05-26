@@ -1,22 +1,36 @@
 import "./_LineUp.scss";
-function LineUp() {
+import { Link } from "react-router-dom";
+function LineUp({ lineUp }) {
 	return (
 		<section className="line_up">
-			<p>
-				FLUME • WEEZER THE SHINS • THIRTY SECONDS TO MARS DILLON FRANCIS • MIIKE SNOW • GLASS
-				ANIMALS • TORY LANEZ • PHANTOGRAM AFI CAPITAL • CITIES OK GO THE NAKED AND FAMOUS KALEO •
-				BUSTA RHYMES • BANKS 0.A.R. BLEACHERS BENNY BENASSI • LIL DICKY•MISTERWIVES T-PAIN • DJ
-				JAZZY JEFF • WALE BOB MOSES • NAHKO AND MEDICINE FOR THE PEOPLE • DAYA MATOMA ILLENIUM KESHA
-				FRANZ FERDINAND GALANTIS • SNAKEHIPS • CASHMERE CAT THE STRUMBELLAS • GRYFFIN FRANCIS AND
-				THE LIGHTS STICK FIGURE • SLUSHII • NF BIG WILD EDEN THE WHITE PANDA BISHOP BRIGGS HAMILTON
-				LEITHAUSER.SIR SLY • LEWIS DEL MAR JUDAH &THE LION K. FLAY MUNA SOFI TUKKER MAGIC GIANT •
-				MEG MAC • RAINBOW KITTEN SURPRISE SUNFLOWER BEAN ARIZONA SIR THE BAPTISI • CRYWOLF ELOHIM
-				FICKLE FRIENDS • SIEVE JAMES • DREAMERS • WIN AND W00 ALEX WILEY SECRET WEAPONS • YOUNG
-				BOMBS ANDY FRASCO&THE U.N. AYOKAY GOODY GRACE • MONDO COZHO • NAWAS. ROZES. SAINT
-				WKND•SAVOIR ADORE LAWRENCE SPIRITUAL REZ SALT CATHEDRAL JARED&THE MILL SUB-RADIO WARM BREW •
-				ALAN WALKER • MAGGIE ROGERS JACOB BANKS SAM FELDT • BARNS COURTNEY ANNA LUNOE JONAS BLUE
-				BLOSSOHS • QUINN XCII JAMES TW KAIYDO PARDISONFONTAINE.HANDSOME GHOST • KE. JOIE KATHOST
-			</p>
+			<div className="lineup">
+				{lineUp.map((m, idx) => {
+					return (
+						<p key={idx}>
+							{m.name}
+							<span>&#183;</span>
+						</p>
+					);
+				})}
+				<a className="cta" href="https://google.dk" target="_blank">
+					SCHEDULE{" "}
+					<span>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="16"
+							height="16"
+							fill="currentColor"
+							className="bi bi-arrow-up-right"
+							viewBox="0 0 16 16"
+						>
+							<path
+								fillRule="evenodd"
+								d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"
+							/>
+						</svg>
+					</span>
+				</a>
+			</div>
 		</section>
 	);
 }
