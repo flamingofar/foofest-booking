@@ -9,6 +9,7 @@ import TicketChoice from "./TicketChoice/TicketChoice";
 import Area from "./Area/Area";
 import Guests from "./Guests/Guests";
 import TentOptions from "./TentOptions/TentOptions";
+import Basket from "../Basket/Basket";
 
 function Tickets() {
 	const { order } = useContext(OrderContext);
@@ -33,18 +34,21 @@ function Tickets() {
 		<>
 			<Nav />
 			<main className="tickets-main">
-				<div className="title ticket_choice">
+				<section className="title ticket_choice">
 					<h1>FooFest</h1>
 					<p>A festival for everyone</p>
 					<p>21.06.2022 - 26.06.2022</p>
-				</div>
-				<TentsProvider>
-					<TicketChoice />
-					<Area />
-					<Guests />
-					<TentOptions />
-				</TentsProvider>
-				<Link to={"/checkout"} className={`cta ${linkActive ? "" : "link-disabled"}`}>
+				</section>
+				<section>
+					<TentsProvider>
+						<TicketChoice />
+						<Area />
+						<Guests />
+						<TentOptions />
+					</TentsProvider>
+				</section>
+				<Basket linkActive={linkActive}></Basket>
+				<Link to={"/checkout"} className={`mobile cta ${linkActive ? "" : "link-disabled"}`}>
 					Checkout
 				</Link>
 			</main>
