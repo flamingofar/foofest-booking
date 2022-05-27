@@ -4,17 +4,15 @@ function SingleArea({ title, spots, spotsAvai, order, setOrder, area }) {
 	return (
 		<li className="single_area">
 			<div>
-				<input type="radio" id={title} name="area" onChange={area.handleChange} value={title} />
-				{/* <button className="choice_btn" onClick={handleArea}>
-					-
-				</button>
-				<p>{order.area[titleS]}</p>
-				<button className="choice_btn" onClick={handleArea}>
-					+
-				</button> */}
-			</div>
-			<div>
-				<label htmlFor={title}>
+				<input
+					className="radio"
+					type="radio"
+					id={title}
+					name="area"
+					onChange={area.handleChange}
+					value={title}
+				/>
+				<label className="radio_label" htmlFor={title}>
 					<strong>{title}</strong>
 				</label>
 				<span>

@@ -173,7 +173,7 @@ function TentOptions() {
 		<section className="ticket_choice tent_choice" disabled={guestsValid}>
 			<h2>Choose your tent option</h2>
 			<fieldset disabled={guestsValid}>
-				<fieldset>
+				<fieldset className="relative">
 					<input
 						id="own"
 						type="radio"
@@ -182,7 +182,7 @@ function TentOptions() {
 						defaultChecked
 						onChange={tentOptions.handleChange}
 					/>
-					<label htmlFor="own">
+					<label className="radio_label" htmlFor="own">
 						<strong>Bring Own Tent</strong>
 					</label>
 				</fieldset>

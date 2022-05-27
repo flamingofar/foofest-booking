@@ -15,5 +15,17 @@
 		.mobile {
 			display: none;
 		}
+		.title {
+			padding-block-start: 8rem;
+
+			display: flex;
+			flex-direction: column;
+			font-weight: lighter;
+
+			p:last-child {
+				margin-block-start: 1rem;
+				font-size: 2rem;
+			}
+		}
 	}
 }

@@ -1,4 +1,5 @@
 @use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/mixins";
 
 .ticket_choice {
 	display: grid;
