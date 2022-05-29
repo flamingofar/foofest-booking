@@ -5,7 +5,7 @@
 	span {
 		flex: 1;
 		font-family: $primary-font;
-		font-size: 1.8rem;
+		font-size: $medium;
 	}
 
 	form {
@@ -14,5 +14,8 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+	}
+	input {
+		font-family: $secondary-font;
 	}
 }

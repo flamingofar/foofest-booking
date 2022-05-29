@@ -4,12 +4,17 @@
 .cta {
 	text-align: center;
 	display: inline-block;
-	width: 100%;
+	// width: 100%;
+	width: fit-content;
+	align-self: center;
 
-	font-family: $primary-font;
+	// font-family: $primary-font;
+	font-family: $secondary-font;
+	text-transform: uppercase;
+	padding: 1rem;
 	text-decoration: none;
 	color: #000;
-	font-size: 2.5rem;
+	font-size: $medium;
 
 	background-color: $bg-color;
 
@@ -31,4 +36,8 @@
 	background-color: $bg-color;
 
 	border: $border-color ($border-thickness * 2) solid;
+}
+.mobile,
+.desktop_checkout {
+	width: auto;
 }

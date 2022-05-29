@@ -3,9 +3,9 @@
 .single_area {
 	display: flex;
 
-	span {
-		font-size: 0.8rem;
-	}
+	// span {
+	// 	font-size: $tiny;
+	// }
 
 	& > div {
 		position: relative;
@@ -18,14 +18,17 @@
 		padding-block-start: 1rem;
 		margin-inline: 2.2rem;
 
+		font-family: $secondary-font;
+
 		display: flex;
 		p {
-			font-size: 1.6rem;
+			// font-size: 1.6rem;
 			padding-inline: 0.5rem;
 		}
 		span {
-			font-weight: bold;
+			// font-weight: bold;
 			color: grey;
+			font-size: $tiny;
 		}
 	}
 
@@ -33,6 +36,6 @@
 		text-align: center;
 		display: inline-block;
 		width: 1.9rem;
-		font-size: 1.5rem;
+		// font-size: 1.5rem;
 	}
 }

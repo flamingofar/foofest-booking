@@ -8,7 +8,7 @@
 	& > p {
 		width: 100%;
 		text-align: center;
-		font-size: 1.5rem;
+		font-size: $medium;
 	}
 
 	.desktop_checkout {
@@ -30,7 +30,7 @@
 	position: absolute;
 	width: 100%;
 	border: $border-color $border-thickness solid;
-	padding-inline: 4rem;
+	padding-inline: 2rem;
 	padding-block: 1.3rem;
 
 	& > *:not(:last-child) {
@@ -38,18 +38,22 @@
 	}
 
 	h4 {
-		font-size: 1.5rem;
+		font-size: $medium;
+	}
+	p {
+		font-family: $secondary-font;
 	}
 
 	ul {
-		font-weight: 700;
-		font-size: 1.2rem;
+		// font-weight: 700;
+		font-size: $small;
+		font-family: $secondary-font;
 		display: flex;
 		flex-direction: column;
 		padding-block-end: 0.5rem;
 	}
 	li {
-		font-size: 1rem;
+		font-family: $secondary-font;
 		margin-block-end: 1rem;
 		& > p {
 			text-decoration: underline;

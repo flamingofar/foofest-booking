@@ -4,8 +4,9 @@ import "./_Nav.scss";
 function Nav() {
 	return (
 		<nav>
-			<Link to={"/"}>FooFest</Link>
-			<p>21.06.2022 - 26.06.2022</p>
+			<Link to={"/"}>FOOFEST</Link>
+			<span></span>
+			<p className="date">21.06.2022 - 26.06.2022</p>
 		</nav>
 	);
 }
