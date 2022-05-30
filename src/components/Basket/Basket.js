@@ -17,7 +17,7 @@ function Basket({ linkActive }) {
 		windowWidth < 768 ? setIsMobile(true) : setIsMobile(false);
 		setIsOpen(false);
 
-		console.log(windowWidth);
+		// console.log(windowWidth);
 	}, [windowWidth]);
 
 	return (
@@ -44,9 +44,6 @@ function BasketContent() {
 		threePrs: order.crewTents.threePersonPrice * order.crewTents.threePerson,
 		greenCamping: order.tentOption.green ? 299 : 0,
 	};
-
-	console.log(sum);
-	console.log(Object.values(sum));
 
 	return (
 		<div className="basket_content">

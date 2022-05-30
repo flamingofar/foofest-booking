@@ -17,7 +17,6 @@ function Tickets() {
 
 	useEffect(() => {
 		const totalOrder = order.crewTents.twoPerson + order.crewTents.threePerson;
-		console.log(totalOrder);
 		const activateCheckout = () => {
 			if (
 				(totalOrder === order.guests.length && order.guests.length >= 1) ||

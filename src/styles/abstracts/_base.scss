@@ -176,3 +176,11 @@ input[type="checkbox"] {
 .checkbox:before {
 	border-radius: 0;
 }
+.radio:disabled + .radio_label strong,
+.radio:disabled ~ span,
+.radio:disabled + .radio_label:after,
+.radio:disabled,
+.radio_label:before {
+	color: $disabled-color;
+	border-color: $disabled-color;
+}
