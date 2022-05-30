@@ -7,7 +7,7 @@ function SingleArea({ title, spots, spotsAvai, order, setOrder, area, id, availa
 	useEffect(() => {
 		const area = availability.filter((area) => area.id === id);
 		const checkAvailability = () =>
-			area[0].available < order.guests.length ? setAvailable(false) : setAvailable(true);
+			area[0].available <= order.guests.length ? setAvailable(false) : setAvailable(true);
 		checkAvailability();
 	}, [JSON.stringify(order.guests)]);
 
