@@ -8,7 +8,7 @@ export const OrderProvider = ({ children }) => {
 		regularPrice: 799,
 		vip: 0,
 		vipPrice: 1299,
-		area: "",
+		area: "Jotunheim",
 		guests: [],
 		tentOption: {
 			bringOwn: true,
@@ -19,8 +19,8 @@ export const OrderProvider = ({ children }) => {
 			twoPersonPrice: 299,
 			threePerson: 0,
 			threePersonPrice: 399,
-			bookingfee: 99,
 		},
+		bookingfee: 99,
 	});
 
 	const value = {

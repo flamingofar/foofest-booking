@@ -121,16 +121,20 @@ div:disabled {
 	}
 }
 
+.cta.disabled,
 .disabled {
 	color: $disabled-color;
 	border: $disabled-color $border-thickness solid;
 	pointer-events: none;
 }
+
 .relative {
 	position: relative;
 }
 
-input[type="radio"] {
+//? *********************** Custom Radio Buttons
+input[type="radio"],
+input[type="checkbox"] {
 	appearance: none;
 }
 
@@ -165,4 +169,10 @@ input[type="radio"] {
 }
 .radio:checked + .radio_label:before {
 	background-color: black;
+}
+
+//? *********************** Custom Checkbox
+.checkbox:after,
+.checkbox:before {
+	border-radius: 0;
 }

@@ -77,7 +77,7 @@ function SingleGuest({ number, ticket, id }) {
 					onChange={guest.handleChange}
 					onBlur={guest.handleBlur}
 				/>
-				{<p>{guest.errors.name}</p>}
+				<p className="error">{guest.touched.name && guest.errors.name && guest.errors.name}</p>
 				<input
 					id="email"
 					type="email"
@@ -89,7 +89,7 @@ function SingleGuest({ number, ticket, id }) {
 					onBlur={guest.handleBlur}
 					onChange={guest.handleChange}
 				/>
-				{guest.touched.email && guest.errors.email && <p>{guest.errors.email}</p>}
+				<p className="error">{guest.touched.email && guest.errors.email && guest.errors.email}</p>
 			</form>
 		</li>
 	);
