@@ -12,7 +12,7 @@ export const OrderProvider = ({ children }) => {
 		guests: [],
 		tentOption: {
 			bringOwn: true,
-			green: null,
+			green: false,
 		},
 		crewTents: {
 			twoPerson: 0,

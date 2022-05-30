@@ -17,39 +17,6 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 function Checkout() {
-	const test = {
-		reservationNr: 22,
-		area: "tissemand",
-		vip: 2,
-		regular: 2,
-		guests: [
-			{ name: "hej", email: "hej@@" },
-			{ name: "hej", email: "hej@@" },
-		],
-		greenCamping: false,
-		bringOwn: false,
-		crewTwoPerson: 1,
-		crewThreePerson: 3,
-	};
-
-	const saveBooking = async (booking) => {
-		const JSONData = await fetch("https://cocktails-2d4e.restdb.io/rest/foofest", {
-			async: true,
-			crossDomain: true,
-			url: "https://cocktails-2d4e.restdb.io/rest/foofest",
-			method: "post",
-			body: JSON.stringify(booking),
-			headers: {
-				"content-type": "application/json",
-				"x-apikey": "6138eab743cedb6d1f97ee7b",
-				"cache-control": "no-cache",
-			},
-		});
-
-		const res = await JSONData.json();
-		console.log(res);
-	};
-
 	const navigate = useNavigate();
 	const { order, setOrder } = useContext(OrderContext);
 	const [time, setTime] = useState(240000);
@@ -90,7 +57,6 @@ function Checkout() {
 			cvc: Yup.string().min(3, "Must be 3 number").max(3, "Must be 3 numbers"),
 		}),
 		onSubmit: () => {
-			console.log(formik.values);
 			const body = {
 				id: reservationNr,
 			};
@@ -108,6 +74,17 @@ function Checkout() {
 				await setResponse(response.message);
 			};
 			fullfillReservation();
+			saveBooking({
+				reservationNr: reservationNr,
+				area: order.area,
+				vip: order.vip,
+				regular: order.regular,
+				guests: order.guests,
+				greenCamping: order.tentOption.green,
+				bringOwn: order.tentOption.bringOwn,
+				crewTwoPerson: order.crewTents.twoPerson,
+				crewThreePerson: order.crewTents.threePerson,
+			});
 		},
 	});
 
@@ -142,7 +119,6 @@ function Checkout() {
 				area: order.area,
 				amount: order.guests.length,
 			};
-			console.log(JSON.stringify(body));
 
 			const reservation = await fetch("https://foofest-bananas.herokuapp.com/reserve-spot", {
 				method: "PUT",
@@ -157,21 +133,25 @@ function Checkout() {
 
 		setSettings();
 		putReservation();
-		saveBooking({
-			reservationNr: 22,
-			area: "tissemand",
-			vip: 2,
-			regular: 2,
-			guests: [
-				{ name: "hej", email: "hej@@" },
-				{ name: "hej", email: "hej@@" },
-			],
-			greenCamping: false,
-			bringOwn: false,
-			crewTwoPerson: 1,
-			crewThreePerson: 3,
-		});
 	}, []);
+
+	const saveBooking = async (booking) => {
+		const JSONData = await fetch("https://cocktails-2d4e.restdb.io/rest/foofest", {
+			async: true,
+			crossDomain: true,
+			url: "https://cocktails-2d4e.restdb.io/rest/foofest",
+			method: "post",
+			body: JSON.stringify(booking),
+			headers: {
+				"content-type": "application/json",
+				"x-apikey": "6138eab743cedb6d1f97ee7b",
+				"cache-control": "no-cache",
+			},
+		});
+
+		const res = await JSONData.json();
+		console.log(res);
+	};
 
 	return (
 		<main className="checkout" onSubmit={formik.handleSubmit}>
