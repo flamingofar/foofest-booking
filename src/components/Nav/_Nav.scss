@@ -1,24 +1,37 @@
 @use "../../styles/abstracts/_variables" as *;
 @use "../../styles/abstracts/mixins";
 nav {
+	font-family: $primary-font;
 	background: $bg-color;
 	display: flex;
-	justify-content: space-between;
-	padding: 1rem 1rem;
-
-	font-family: $primary-font;
+	height: 12vh;
+	// justify-content: space-between;
+	// padding: 1rem 1rem;
+	padding-inline: 1.5rem;
 
 	a {
-		align-self: flex-start;
-		font-size: 2.4rem;
+		align-self: center;
+		font-size: $large;
+	}
+	span {
+		width: 1px;
+		background-color: $border-color;
+		margin-inline: 2rem;
 	}
 
 	p {
-		font-size: 1rem;
+		// font-size: 1rem;
 		align-self: flex-end;
+		width: 100%;
+		text-align: end;
+		max-width: none;
 	}
 
 	@include mixins.md {
-		height: 5.56rem;
+		// height: 5.56rem;
+		height: 15vh;
+		p {
+			align-self: center;
+		}
 	}
 }

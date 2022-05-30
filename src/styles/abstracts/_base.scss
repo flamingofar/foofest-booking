@@ -27,6 +27,17 @@ ul,
 li {
 	font-family: $primary-font;
 }
+h1,
+h2 {
+	font-size: $large;
+}
+h3 {
+	font-size: $medium;
+}
+h4,
+p {
+	font-size: $small;
+}
 
 a {
 	text-decoration: none;
@@ -124,7 +135,9 @@ input[type="radio"] {
 }
 
 .radio_label {
-	font-size: 1.5rem;
+	// font-size: 1.5rem;
+	font-size: $small;
+	font-weight: 200;
 }
 
 .radio_label:before,

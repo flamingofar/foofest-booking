@@ -4,11 +4,20 @@
 .tickets-main {
 	h2 {
 		text-align: center;
-		font-size: 2rem;
+		// font-size: 2rem;
+		font-size: $medium;
+	}
+
+	.title > p:nth-child(2),
+	p:nth-child(3) {
+		font-family: $primary-font;
 	}
 
 	p {
-		font-family: $primary-font;
+		font-family: $secondary-font;
+	}
+	.guest > form:nth-child(2) > p:nth-child(3) {
+		font-size: $tiny;
 	}
 
 	@include mixins.md {
@@ -24,7 +33,6 @@
 
 			p:last-child {
 				margin-block-start: 1rem;
-				font-size: 2rem;
 			}
 		}
 	}
