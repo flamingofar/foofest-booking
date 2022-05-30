@@ -12,7 +12,7 @@ function TimerModal() {
 					<Link to={"/"} className="cta">
 						Back to start
 					</Link>
-					<a className="cta" href="https://google.dk" target="_blank">
+					<a className="cta" href="https://foofestapp.netlify.app/" target="_blank">
 						To schedule
 					</a>
 				</div>

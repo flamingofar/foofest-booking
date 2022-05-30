@@ -12,7 +12,7 @@ function LineUp({ lineUp }) {
 						</p>
 					);
 				})}
-				<a className="cta" href="https://google.dk" target="_blank">
+				<a className="cta" href="https://foofestapp.netlify.app/" target="_blank">
 					SCHEDULE{" "}
 					<span>
 						<svg
