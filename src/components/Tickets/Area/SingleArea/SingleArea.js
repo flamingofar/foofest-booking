@@ -11,6 +11,7 @@ function SingleArea({ title, spots, spotsAvai, order, setOrder, area }) {
 					name="area"
 					onChange={area.handleChange}
 					value={title}
+					defaultChecked={title === "Svartheim" ? true : false}
 				/>
 				<label className="radio_label" htmlFor={title}>
 					<strong>{title}</strong>

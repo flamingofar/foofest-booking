@@ -13,6 +13,20 @@
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: flex-start;
+		& > p {
+			margin-block-end: 0.5rem;
+		}
+		.error {
+			text-align: left;
+			display: inline-block;
+			height: 2ch;
+			font-size: 0.8rem;
+			color: rgb(245, 28, 28);
+
+			&:not(:last-child) {
+				margin-block-end: 0.85rem;
+			}
+		}
 	}
 }

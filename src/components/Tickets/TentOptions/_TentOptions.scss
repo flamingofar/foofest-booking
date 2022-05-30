@@ -1,7 +1,5 @@
 @use "../../../styles/abstracts/variables" as *;
 .tents {
-	h2 {
-	}
 	fieldset {
 		display: flex;
 		align-items: center;
@@ -22,5 +20,37 @@
 	}
 	& > fieldset {
 		flex-direction: column;
+		& > fieldset:last-child {
+			margin-block-start: 0.5rem;
+		}
+		p {
+			margin-inline-start: 1.2rem;
+
+			text-align: initial;
+			margin-block-end: 0.4rem;
+		}
+		fieldset:not(.crew) {
+			margin-block-end: 1rem;
+		}
+	}
+	fieldset.relative {
+		margin-inline: 2.2rem;
+	}
+
+	.crew {
+		margin-inline-start: 2rem;
+		margin-block-end: 0.3rem;
+		p:first-of-type {
+			text-align: center;
+			width: 2ch;
+		}
+		p:last-of-type {
+			display: inline-block;
+			vertical-align: middle;
+			margin-inline-start: 0.5rem;
+		}
+		p {
+			margin-inline: 0;
+		}
 	}
 }

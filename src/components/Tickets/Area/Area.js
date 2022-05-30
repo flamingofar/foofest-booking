@@ -13,7 +13,7 @@ function Area() {
 
 	const formik = useFormik({
 		initialValues: {
-			area: "",
+			area: "Svartheim",
 		},
 	});
 

@@ -9,7 +9,7 @@
 	.ticket_number {
 		text-align: center;
 		display: inline-block;
-		width: 1.9rem;
+		width: 2ch;
 		font-size: 1.5rem;
 	}
 
@@ -26,10 +26,10 @@
 			margin-inline-end: 1.5rem;
 
 			display: flex;
+			align-items: center;
 		}
 		p {
 			font-size: 1.5rem;
-			padding-inline: 0.5rem;
 		}
 	}
 }

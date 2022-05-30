@@ -15,21 +15,21 @@ function Tickets() {
 	const { order } = useContext(OrderContext);
 	const [linkActive, setLinkActive] = useState(false);
 
-	const totalOrder = order.crewTents.twoPerson + order.crewTents.threePerson;
-
 	useEffect(() => {
-		if (order.tentOption.bringOwn && order.guests.length >= 1) {
-			console.log("first");
-			setLinkActive(true);
-		} else if (order.crewTents.twoPerson + order.crewTents.threePerson === order.guests.length) {
-			console.log("second");
-			setLinkActive(true);
-		} else {
-			console.log("false");
-			setLinkActive(false);
-		}
+		const totalOrder = order.crewTents.twoPerson + order.crewTents.threePerson;
 		console.log(totalOrder);
-	}, [order.tentOption.bringOwn, JSON.stringify(order.crewTents)]);
+		const activateCheckout = () => {
+			if (
+				(totalOrder === order.guests.length && order.guests.length >= 1) ||
+				(order.tentOption.bringOwn && order.guests.length >= 1)
+			) {
+				setLinkActive(true);
+			} else {
+				setLinkActive(false);
+			}
+		};
+		activateCheckout();
+	}, [JSON.stringify(order)]);
 	return (
 		<>
 			<Nav />
@@ -48,7 +48,7 @@ function Tickets() {
 					</TentsProvider>
 				</section>
 				<Basket linkActive={linkActive}></Basket>
-				<Link to={"/checkout"} className={`mobile cta ${linkActive ? "" : "link-disabled"}`}>
+				<Link to={"/checkout"} className={`mobile cta ${linkActive ? "disabled" : ""}`}>
 					Checkout
 				</Link>
 			</main>

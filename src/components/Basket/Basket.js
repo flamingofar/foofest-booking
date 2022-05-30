@@ -1,6 +1,7 @@
 import "./_Basket.scss";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { OrderContext } from "../../context/Tickets";
 import { useWindowWidth } from "@react-hook/window-size";
 
 function Basket({ linkActive }) {
@@ -25,10 +26,7 @@ function Basket({ linkActive }) {
 
 			{isMobile ? isOpen && isMobile && <BasketContent /> : <BasketContent />}
 
-			<Link
-				to={"/checkout"}
-				className={`desktop_checkout cta ${linkActive ? "" : "link-disabled"}`}
-			>
+			<Link to={"/checkout"} className={`desktop_checkout cta ${linkActive ? "" : "disabled"}`}>
 				Checkout
 			</Link>
 		</section>
@@ -36,74 +34,116 @@ function Basket({ linkActive }) {
 }
 
 function BasketContent() {
+	const { order } = useContext(OrderContext);
+
+	const sum = {
+		bookingfee: 99,
+		regular: order.regular * order.regularPrice,
+		vip: order.vip * order.vipPrice,
+		twoPrs: order.crewTents.twoPersonPrice * order.crewTents.twoPerson,
+		threePrs: order.crewTents.threePersonPrice * order.crewTents.threePerson,
+		greenCamping: order.tentOption.green ? 299 : 0,
+	};
+
+	console.log(sum);
+	console.log(Object.values(sum));
+
 	return (
 		<div className="basket_content">
 			<h4>Order:</h4>
 			<ul>
-				Tickets:
 				<li>
 					<div>
-						<p>Regular Ticket x3</p>
-						<span>á 3 x 799,-</span>
+						<p>Bookingfee</p>
+						<span> {order.bookingfee},-</span>
 					</div>
-					<p>9999,-</p>
-				</li>
-				<li>
-					<div>
-						<p>Vip Ticket x3</p>
-						<span>á 3 x 799,-</span>
-					</div>
-					<p>9999,-</p>
+					<p>{order.bookingfee},-</p>
 				</li>
 			</ul>
+			<ul>
+				Tickets:
+				{order.regular ? (
+					<li>
+						<div>
+							<p>Regular Ticket x {order.regular}</p>
+							<span>á {order.regular} x 799,-</span>
+						</div>
+						<p>{order.regular * order.regularPrice},-</p>
+					</li>
+				) : null}
+				{order.vip ? (
+					<li>
+						<div>
+							<p>Vip Ticket x {order.vip}</p>
+							<span>á {order.vip} x 799,-</span>
+						</div>
+						<p>{order.vip * order.vipPrice},-</p>
+					</li>
+				) : null}
+			</ul>
+
 			<ul>
 				Area:
 				<li>
 					<div>
-						<p>Jotunheim</p>
+						<p>{order.area}</p>
 						<span>Free</span>
 					</div>
 					<p>0,-</p>
 				</li>
 			</ul>
+
 			<ul>
 				Tent:
-				<li>
-					<div>
-						<p>Bring Own Tent</p>
-						<span>Free</span>
-					</div>
-					<p>0,-</p>
-				</li>
-				<li>
-					<div>
-						<p>Crew Setup - 2 person tent: 2</p>
-						<span>á 3 x 399,-</span>
-					</div>
-					<p>9999,-</p>
-				</li>
-				<li>
-					<div>
-						<p>Crew Setup - 3 person tent: 3</p>
-						<span>á 3 x 499,-</span>
-					</div>
-					<p>9999,-</p>
-				</li>
-				<li>
-					<div>
-						<p>Green Camping</p>
-						<span>299,-</span>
-					</div>
-					<p>249,-</p>
-				</li>
-				<li></li>
+				{order.tentOption.bringOwn ? (
+					<li>
+						<div>
+							<p>Bring Own Tent</p>
+							<span>Free</span>
+						</div>
+						<p>0,-</p>
+					</li>
+				) : null}
+				{order.tentOption.bringOwn ? null : (
+					<li>
+						<div>
+							<p>Crew Setup - 2 prs.: {order.crewTents.twoPerson}</p>
+							<span>á {order.crewTents.twoPerson} x 399,-</span>
+						</div>
+						<p>{order.crewTents.twoPerson * order.crewTents.twoPersonPrice},-</p>
+					</li>
+				)}
+				{order.tentOption.bringOwn ? null : (
+					<li>
+						<div>
+							<p>Crew Setup - 3 prs.: {order.crewTents.threePerson}</p>
+							<span>á {order.crewTents.threePerson} x 499,-</span>
+						</div>
+						<p>{order.crewTents.threePerson * order.crewTents.threePersonPrice},-</p>
+					</li>
+				)}
+				{order.tentOption.green && (
+					<li>
+						<div>
+							<p>Green Camping</p>
+							<span>299,-</span>
+						</div>
+						<p>249,-</p>
+					</li>
+				)}
 			</ul>
 			<ul>
 				<li>
 					<div>
 						<p>Total</p>
-					</div>{" "}
-					<p>9999,-</p>
+					</div>
+					<p>
+						{Object.values(sum).reduce(
+							(previousValue, currentValue) => previousValue + currentValue,
+							0
+						)}
+						,-
+					</p>
 				</li>
 			</ul>
 		</div>

@@ -170,35 +170,40 @@ function TentOptions() {
 	}, [JSON.stringify(order.guests)]);
 
 	return (
-		<section className="ticket_choice tent_choice" disabled={guestsValid}>
+		<section className="ticket_choice tent_choice section_p" disabled={guestsValid}>
 			<h2>Choose your tent option</h2>
 			<fieldset disabled={guestsValid}>
-				<fieldset className="relative">
+				<fieldset className="relative ">
 					<input
 						id="own"
 						type="radio"
 						name="tent_option"
 						value={"own"}
-						defaultChecked
+						defaultChecked={tentOptions.values.tent_option === "own" ? true : false}
 						onChange={tentOptions.handleChange}
+						className="radio"
 					/>
 					<label className="radio_label" htmlFor="own">
 						<strong>Bring Own Tent</strong>
 					</label>
 				</fieldset>
-				<fieldset>
+				<fieldset className="relative">
 					<input
 						id="pre"
 						type="radio"
 						name="tent_option"
 						value={"pre"}
 						onChange={tentOptions.handleChange}
+						className="radio"
 					/>
-					<label htmlFor="pre">
+					<label htmlFor="pre" className="radio_label">
 						<strong>Crew Setup</strong>
 					</label>
 				</fieldset>
-				<fieldset disabled={tentOptions.values.tent_option === "own" ? true : false}>
+				<fieldset
+					className="crew"
+					disabled={tentOptions.values.tent_option === "own" ? true : false}
+				>
 					<button className="choice_btn" onClick={handleTwoPersonTent}>
 						-
 					</button>
@@ -211,7 +216,10 @@ function TentOptions() {
 						<strong>2 person tent 299,-</strong>
 					</p>
 				</fieldset>
-				<fieldset disabled={tentOptions.values.tent_option === "own" ? true : false}>
+				<fieldset
+					className="crew"
+					disabled={tentOptions.values.tent_option === "own" ? true : false}
+				>
 					<button className="choice_btn" onClick={handleThreePersonTent}>
 						-
 					</button>
@@ -224,14 +232,15 @@ function TentOptions() {
 						<strong>3 person tent 399,</strong>
 					</p>
 				</fieldset>
-				<fieldset>
+				<fieldset className="relative">
 					<input
 						id="greencamping"
 						type="checkbox"
 						name="greenCamping"
 						onChange={tentOptions.handleChange}
+						className="radio"
 					/>
-					<label htmlFor="greencamping">
+					<label htmlFor="greencamping" className="radio_label checkbox">
 						<strong>Green Camping</strong>
 					</label>
 				</fieldset>
