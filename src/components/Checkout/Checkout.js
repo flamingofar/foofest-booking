@@ -25,6 +25,7 @@ function Checkout() {
 	const [response, setResponse] = useState("");
 
 	const formik = useFormik({
+		validateOnMount: true,
 		initialValues: {
 			firstName: "",
 			lastName: "",
@@ -39,8 +40,8 @@ function Checkout() {
 			cvc: "",
 		},
 		validationSchema: Yup.object({
-			firstName: Yup.string().max(10, "Must be shorter than 10 characters").required("Required"),
-			lastName: Yup.string().max(10, "Must be shorter than 10 characters").required("Required"),
+			firstName: Yup.string().required("Required"),
+			lastName: Yup.string().required("Required"),
 			email: Yup.string().email().required("Required"),
 			phone: Yup.number()
 				.required()
@@ -52,9 +53,37 @@ function Checkout() {
 			city: Yup.string().required("Required"),
 			zip: Yup.number().required("Required"),
 			//? PAYMENT
-			cardname: Yup.number().min(16, "Must be 16 number").max(16, "Must be 16 numbers"),
-			exp: Yup.string().min(5, "Must be 4 number").max(5, "Must be 4 numbers"),
-			cvc: Yup.string().min(3, "Must be 3 number").max(3, "Must be 3 numbers"),
+			paymentMethod: Yup.string().required(),
+			cardnumber: Yup.string().when("paymentMethod", {
+				is: "creditcard",
+				then: Yup.string()
+					.test("cardnumber", "Must be 16 numbers", (val) => {
+						const val_length_without_mask = val.replace(/\s/g, "").length;
+						return val_length_without_mask === 16;
+					})
+					.required(),
+				otherwise: Yup.string().notRequired(),
+			}),
+			exp: Yup.string().when("paymentMethod", {
+				is: "creditcard",
+				then: Yup.string()
+					.test("exp", "Must be 4 numbers", (val) => {
+						const val_length_without_mask = val.replace(/[^\d]/gi, "").length;
+						return val_length_without_mask === 4;
+					})
+					.required("Required"),
+				otherwise: Yup.string().notRequired(),
+			}),
+			cvc: Yup.string().when("paymentMethod", {
+				is: "creditcard",
+				then: Yup.string()
+					.required("Required")
+					.test("cvc", "Must be 3 numbers", (val) => {
+						const val_length_without_mask = val.replace(/\s/g, "").length;
+						return val_length_without_mask === 3;
+					}),
+				otherwise: Yup.string().notRequired(),
+			}),
 		}),
 		onSubmit: () => {
 			const body = {

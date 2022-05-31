@@ -61,8 +61,6 @@ main {
 	}
 	& > section {
 		@include mixins.md {
-			height: $height;
-			overflow: scroll;
 		}
 	}
 }
@@ -81,9 +79,9 @@ input {
 	}
 }
 
-label {
-	cursor: pointer;
-}
+// label {
+// 	cursor: pointer;
+// }
 
 .section_p {
 	padding: 2rem 1.6rem;
@@ -128,6 +126,11 @@ div:disabled {
 .disabled {
 	color: $disabled-color;
 	border: $disabled-color $border-thickness solid;
+	pointer-events: none;
+}
+
+.card_disabled {
+	color: $disabled-color;
 	pointer-events: none;
 }
 

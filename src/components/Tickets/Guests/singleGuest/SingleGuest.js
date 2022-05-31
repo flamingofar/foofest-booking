@@ -97,9 +97,8 @@ function SingleGuest({ number, ticket, id }) {
 							onChange={guest.handleChange}
 						/>
 					</div>
+					<p className="error">{guest.touched.email && guest.errors.email && guest.errors.email}</p>
 				</div>
-
-				<p className="error">{guest.touched.email && guest.errors.email && guest.errors.email}</p>
 			</form>
 		</li>
 	);

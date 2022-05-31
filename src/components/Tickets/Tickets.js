@@ -13,26 +13,9 @@ import Basket from "./Basket/Basket";
 import InfoPane from "../InfoPane/InfoPane";
 
 function Tickets() {
-	const { order } = useContext(OrderContext);
-	const [linkActive, setLinkActive] = useState(false);
-
 	//Used for setting tent options and checkout button to be or not disabled
 	const [guestsValid, setGuestsValid] = useState(true);
 
-	useEffect(() => {
-		const totalOrder = order.crewTents.twoPerson + order.crewTents.threePerson;
-		const activateCheckout = () => {
-			if (
-				(totalOrder === order.guests.length && order.guests.length >= 1) ||
-				(order.tentOption.bringOwn && order.guests.length >= 1)
-			) {
-				setLinkActive(true);
-			} else {
-				setLinkActive(false);
-			}
-		};
-		activateCheckout();
-	}, [JSON.stringify(order)]);
 	return (
 		<>
 			<Nav />
@@ -46,11 +29,7 @@ function Tickets() {
 						<TentOptions setGuestsValid={setGuestsValid} guestsValid={guestsValid} />
 					</TentsProvider>
 				</section>
-				<Basket
-					linkActive={linkActive}
-					setGuestsValid={setGuestsValid}
-					guestsValid={guestsValid}
-				></Basket>
+				<Basket setGuestsValid={setGuestsValid} guestsValid={guestsValid}></Basket>
 				<Link to={"/checkout"} className={`mobile cta ${guestsValid ? "disabled" : ""}`}>
 					Checkout
 				</Link>
