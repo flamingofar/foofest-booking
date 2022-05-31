@@ -2,12 +2,6 @@
 @use "../../styles/abstracts/mixins";
 
 .tickets-main {
-	h2 {
-		text-align: center;
-		// font-size: 2rem;
-		font-size: $medium;
-	}
-
 	.title > p:nth-child(2),
 	p:nth-child(3) {
 		font-family: $primary-font;
@@ -23,6 +17,17 @@
 	@include mixins.md {
 		.mobile {
 			display: none;
+		}
+		.title {
+			padding-block-start: 8rem;
+
+			display: flex;
+			flex-direction: column;
+			font-weight: lighter;
+
+			p:last-child {
+				margin-block-start: 1rem;
+			}
 		}
 	}
 }

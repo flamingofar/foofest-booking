@@ -61,7 +61,7 @@ main {
 	}
 	& > section {
 		@include mixins.md {
-			height: calc(100vh - 5.8rem);
+			height: $height;
 			overflow: scroll;
 		}
 	}
@@ -76,6 +76,10 @@ input {
 	border: none;
 	border-bottom: solid $border-color $border-thickness;
 	padding-block-end: 0.2rem;
+}
+
+label {
+	cursor: pointer;
 }
 
 .input_wrapper {

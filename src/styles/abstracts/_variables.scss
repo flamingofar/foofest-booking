@@ -25,11 +25,5 @@ $bg-color: #ffffff;
 $primary-font: $Rakkas;
 $secondary-font: $Raleway;
 
-@mixin border {
-	border-top: $border-thickness solid $border-color;
-	border-left: $border-thickness solid $border-color;
-}
-
-@mixin bottom-border {
-	border-bottom: $border-thickness solid $border-color;
-}
+//! Container height
+$height: calc(100vh - 9.3rem);

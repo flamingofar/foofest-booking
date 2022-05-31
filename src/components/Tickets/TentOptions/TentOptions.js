@@ -31,7 +31,7 @@ function TentOptions() {
 		setTentsToChoose(order.guests.length || 1);
 		setOrder((prev) => {
 			const newOrder = { ...prev };
-			// newOrder.guests[guestIdx] = { ...newOrder.guests[guestIdx], email: e.target.value };
+
 			newOrder.crewTents = { ...newOrder.crewTents, twoPerson: 0 };
 			newOrder.crewTents = { ...newOrder.crewTents, threePerson: 0 };
 
@@ -112,7 +112,7 @@ function TentOptions() {
 	useEffect(() => {
 		setOrder((prev) => {
 			const newOrder = { ...prev };
-			// newOrder.guests[guestIdx] = { ...newOrder.guests[guestIdx], email: e.target.value };
+
 			newOrder.tentOption =
 				tentOptions.values.tent_option === "own"
 					? { ...newOrder.tentOption, bringOwn: true }
@@ -121,13 +121,12 @@ function TentOptions() {
 			return newOrder;
 		});
 	}, [tentOptions.values.tent_option]);
-	// order.crewTents.twoPerson, order.crewTents.threePerson
 
 	//? Set green camping to what the user chooses
 	useEffect(() => {
 		setOrder((prev) => {
 			const newOrder = { ...prev };
-			// newOrder.guests[guestIdx] = { ...newOrder.guests[guestIdx], email: e.target.value };
+
 			newOrder.tentOption = { ...newOrder.tentOption, green: tentOptions.values.greenCamping };
 
 			return newOrder;

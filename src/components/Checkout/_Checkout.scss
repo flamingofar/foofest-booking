@@ -1,4 +1,5 @@
 @use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins";
 .checkout {
 	h2 {
 		margin-block-end: 0.8rem;
@@ -18,5 +19,35 @@
 	}
 	& fieldset:not(:last-child) {
 		border-bottom: $border-color $border-thickness solid;
+	}
+
+	@include mixins.md {
+		form {
+			overflow-y: scroll;
+			height: $height;
+		}
+
+		.title {
+			padding-block-start: 8rem;
+			display: flex;
+			flex-direction: column;
+			font-weight: lighter;
+			h1 {
+				text-align: center;
+				// font-size: 2rem;
+				// font-size: $medium;
+			}
+			.title > p:nth-child(2),
+			p:nth-child(3) {
+				font-family: $primary-font;
+			}
+
+			.guest > form:nth-child(2) > p:nth-child(3) {
+				font-size: $tiny;
+			}
+			p:last-child {
+				margin-block-start: 1rem;
+			}
+		}
 	}
 }

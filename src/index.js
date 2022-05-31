@@ -7,7 +7,6 @@ import Tickets from "./components/Tickets/Tickets";
 
 import App from "./App";
 import Checkout from "./components/Checkout/Checkout";
-import Landing from "./components/Landing/Landing";
 import Confirmation from "./components/Checkout/Confirmation/Confirmation";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -17,7 +16,7 @@ root.render(
 		<OrderProvider>
 			<AvailabilityProvider>
 				<Routes>
-					<Route path="/" element={<Landing />} />
+					<Route path="/" element={<App />} />
 					<Route path="/tickets" element={<Tickets />} />
 					<Route path="/checkout" element={<Checkout />} />
 					<Route path="/confirmation" element={<Confirmation />} />

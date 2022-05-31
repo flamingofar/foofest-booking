@@ -10,6 +10,7 @@ import Area from "./Area/Area";
 import Guests from "./Guests/Guests";
 import TentOptions from "./TentOptions/TentOptions";
 import Basket from "../Basket/Basket";
+import InfoPane from "../InfoPane/InfoPane";
 
 function Tickets() {
 	const { order } = useContext(OrderContext);
@@ -33,11 +34,7 @@ function Tickets() {
 		<>
 			<Nav />
 			<main className="tickets-main">
-				<section className="title ticket_choice">
-					<h1>FooFest</h1>
-					<p>A festival for everyone</p>
-					<p>21.06.2022 - 26.06.2022</p>
-				</section>
+				<InfoPane />
 				<section>
 					<TentsProvider>
 						<TicketChoice />

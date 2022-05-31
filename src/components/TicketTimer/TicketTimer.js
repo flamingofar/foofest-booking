@@ -3,9 +3,6 @@ import "./_TicketTimer.scss";
 import Countdown, { zeroPad } from "react-countdown";
 
 function TicketTimer({ timeStamp, setTimeoutDone, timeoutDone }) {
-	// Random component
-	const Completionist = () => <span>You are good to go!</span>;
-
 	// Renderer callback with condition
 	const countdown = ({ minutes, seconds, completed }) => {
 		if (completed) {

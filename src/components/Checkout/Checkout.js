@@ -1,7 +1,5 @@
 import "./_Checkout.scss";
 
-import { CheckoutFormProvider } from "../../context/CheckoutForm";
-
 import { useNavigate } from "react-router-dom";
 import { useEffect, useContext, useState } from "react";
 import { OrderContext } from "../../context/Tickets";
@@ -12,6 +10,8 @@ import Pay from "./Pay/Pay";
 import Nav from "../Nav/Nav";
 import TicketTimer from "../TicketTimer/TicketTimer";
 import TimerModal from "../TicketTimer/TimerModal/TimerModal";
+import CheckoutBasket from "./CheckoutBasket/CheckoutBasket";
+import InfoPane from "../InfoPane/InfoPane";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -154,18 +154,20 @@ function Checkout() {
 	};
 
 	return (
-		<main className="checkout" onSubmit={formik.handleSubmit}>
+		<>
 			<Nav />
 			<TicketTimer timeStamp={time} timeoutDone={timeoutDone} setTimeoutDone={setTimeoutDone} />
-			{timeoutDone && <TimerModal></TimerModal>}
-			<CheckoutFormProvider>
+			{timeoutDone && <TimerModal />}
+			<main className="checkout" onSubmit={formik.handleSubmit}>
+				<InfoPane />
 				<form>
 					<ContactInfo formik={formik} />
 					<Address formik={formik} />
 					<Pay formik={formik} />
 				</form>
-			</CheckoutFormProvider>
-		</main>
+				<CheckoutBasket />
+			</main>
+		</>
 	);
 }
 

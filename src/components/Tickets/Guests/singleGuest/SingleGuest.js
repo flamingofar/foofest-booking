@@ -71,9 +71,7 @@ function SingleGuest({ number, ticket, id }) {
 					type="text"
 					name="name"
 					placeholder="Full Name:"
-					// value={order.guests[guestIdx].name}
 					value={guest.values.name}
-					// onChange={handleNameInput}
 					onChange={guest.handleChange}
 					onBlur={guest.handleBlur}
 				/>
@@ -83,9 +81,7 @@ function SingleGuest({ number, ticket, id }) {
 					type="email"
 					name="email"
 					placeholder="Mail"
-					// value={order.guests[guestIdx.email]}
 					value={guest.values.email}
-					// onChange={handleEmailInput}
 					onBlur={guest.handleBlur}
 					onChange={guest.handleChange}
 				/>
