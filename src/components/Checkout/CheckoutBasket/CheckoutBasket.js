@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { OrderContext } from "../../../context/Tickets";
 import { useWindowWidth } from "@react-hook/window-size";
+import NumberFormat from "react-number-format";
 
 function CheckoutBasket({ linkActive }) {
 	const [isOpen, setIsOpen] = useState(false);
@@ -48,6 +49,7 @@ function BasketContent() {
 				<li>
 					<div>
 						<p>Bookingfee</p>
+
 						<span> {order.bookingfee},-</span>
 					</div>
 					<p>{order.bookingfee},-</p>

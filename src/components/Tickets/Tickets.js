@@ -9,12 +9,15 @@ import TicketChoice from "./TicketChoice/TicketChoice";
 import Area from "./Area/Area";
 import Guests from "./Guests/Guests";
 import TentOptions from "./TentOptions/TentOptions";
-import Basket from "../Basket/Basket";
+import Basket from "./Basket/Basket";
 import InfoPane from "../InfoPane/InfoPane";
 
 function Tickets() {
 	const { order } = useContext(OrderContext);
 	const [linkActive, setLinkActive] = useState(false);
+
+	//Used for setting tent options and checkout button to be or not disabled
+	const [guestsValid, setGuestsValid] = useState(true);
 
 	useEffect(() => {
 		const totalOrder = order.crewTents.twoPerson + order.crewTents.threePerson;
@@ -40,11 +43,15 @@ function Tickets() {
 						<TicketChoice />
 						<Area />
 						<Guests />
-						<TentOptions />
+						<TentOptions setGuestsValid={setGuestsValid} guestsValid={guestsValid} />
 					</TentsProvider>
 				</section>
-				<Basket linkActive={linkActive}></Basket>
-				<Link to={"/checkout"} className={`mobile cta ${linkActive ? "disabled" : ""}`}>
+				<Basket
+					linkActive={linkActive}
+					setGuestsValid={setGuestsValid}
+					guestsValid={guestsValid}
+				></Basket>
+				<Link to={"/checkout"} className={`mobile cta ${guestsValid ? "disabled" : ""}`}>
 					Checkout
 				</Link>
 			</main>

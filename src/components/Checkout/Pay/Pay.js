@@ -42,77 +42,89 @@ function Pay({ formik }) {
 					PayPal
 				</label>
 			</div>
-			<div className="input_wrapper">
-				<NumberFormat
-					prefix="Rs."
-					className={
-						formik.values.paymentMethod === "mobilepay" || formik.values.paymentMethod === "paypal"
-							? "disabled"
-							: ""
-					}
-					allowEmptyFormatting
-					format="#### #### #### ####"
-					mask="x"
-					type="text"
-					id="cardnumber"
-					name="cardnumber"
-					placeholder="Card Number"
-					onBlur={formik.handleBlur}
-					onChange={formik.handleChange}
-					value={formik.values.cardnumber}
-					onValueChange={(values) => {
-						const { value } = values;
-						formik.setFieldValue("cardnumber", value);
-					}}
-				></NumberFormat>
-				{formik.touched.cardnumber && formik.errors ? <p>{formik.errors.cardnumber}</p> : null}
-			</div>
+			<div className="credit_wrapper">
+				<div className="input_wrapper">
+					<div>
+						<NumberFormat
+							prefix="Rs."
+							className={
+								formik.values.paymentMethod === "mobilepay" ||
+								formik.values.paymentMethod === "paypal"
+									? "disabled"
+									: ""
+							}
+							allowEmptyFormatting
+							format="#### #### #### ####"
+							mask="x"
+							type="text"
+							id="cardnumber"
+							name="cardnumber"
+							placeholder="Card Number"
+							onBlur={formik.handleBlur}
+							onChange={formik.handleChange}
+							value={formik.values.cardnumber}
+							onValueChange={(values) => {
+								const { value } = values;
+								formik.setFieldValue("cardnumber", value);
+							}}
+						></NumberFormat>
+					</div>
+					<p className="error">
+						{formik.touched.cardnumber && formik.errors.cardnumber && formik.errors.cardnumber}
+					</p>
+				</div>
 
-			<div className="double_input">
-				<div className="input_wrapper">
-					<NumberFormat
-						className={
-							formik.values.paymentMethod === "mobilepay" ||
-							formik.values.paymentMethod === "paypal"
-								? "disabled"
-								: ""
-						}
-						format="##/##"
-						placeholder="MM/YY"
-						mask={["M", "M", "Y", "Y"]}
-						type="text"
-						id="exp"
-						name="exp"
-						onBlur={formik.handleBlur}
-						onChange={formik.handleChange}
-						value={formik.values.exp}
-						onValueChange={(values) => {
-							const { value } = values;
-							formik.setFieldValue("exp", value);
-						}}
-					/>
-					{formik.touched.exp && formik.errors ? <p>{formik.errors.exp}</p> : null}
-				</div>
-				<div className="input_wrapper">
-					<input
-						className={
-							formik.values.paymentMethod === "mobilepay" ||
-							formik.values.paymentMethod === "paypal"
-								? "disabled"
-								: ""
-						}
-						type="text"
-						id="cvc"
-						name="cvc"
-						placeholder="CVC"
-						onBlur={formik.handleBlur}
-						onChange={formik.handleChange}
-						value={formik.values.cvc}
-					/>
-					{formik.touched.cvc && formik.errors ? <p>{formik.errors.cvc}</p> : null}
+				<div className="double_input">
+					<div className="input_wrapper">
+						<div>
+							<NumberFormat
+								className={
+									formik.values.paymentMethod === "mobilepay" ||
+									formik.values.paymentMethod === "paypal"
+										? "disabled"
+										: ""
+								}
+								format="##/##"
+								placeholder="MM/YY"
+								mask={["M", "M", "Y", "Y"]}
+								type="text"
+								id="exp"
+								name="exp"
+								onBlur={formik.handleBlur}
+								onChange={formik.handleChange}
+								value={formik.values.exp}
+								onValueChange={(values) => {
+									const { value } = values;
+									formik.setFieldValue("exp", value);
+								}}
+							/>
+						</div>
+					</div>
+					<p className="error">{formik.touched.exp && formik.errors.exp && formik.errors.exp}</p>
+
+					<div className="input_wrapper">
+						<div>
+							<input
+								className={
+									formik.values.paymentMethod === "mobilepay" ||
+									formik.values.paymentMethod === "paypal"
+										? "disabled"
+										: ""
+								}
+								type="text"
+								id="cvc"
+								name="cvc"
+								placeholder="CVC"
+								onBlur={formik.handleBlur}
+								onChange={formik.handleChange}
+								value={formik.values.cvc}
+							/>
+						</div>
+						<p className="error">{formik.touched.cvc && formik.errors.cvc && formik.errors.cvc}</p>
+					</div>
 				</div>
 			</div>
-			<button type="submit" className="cta" disabled={!formik.isValid}>
+			<button type="submit" className="cta pay" disabled={!formik.isValid}>
 				Pay
 			</button>
 		</fieldset>

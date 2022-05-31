@@ -91,7 +91,7 @@ function Checkout() {
 	useEffect(() => {
 		if (response === "Reservation completed") {
 			setResponse("");
-			navigate("/confirmation");
+			navigate("/confirmation", { state: { reservationNr: reservationNr } });
 		} else {
 			console.log("NOPE");
 		}

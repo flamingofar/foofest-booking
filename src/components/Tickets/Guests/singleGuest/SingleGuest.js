@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import "./_SingleGuest.scss";
+import "../../../../styles/shared/_textinput.scss";
 function SingleGuest({ number, ticket, id }) {
 	const guest = useFormik({
 		initialValues: {
@@ -66,25 +67,38 @@ function SingleGuest({ number, ticket, id }) {
 				<p>
 					<strong>{ticket ? "VIP" : "Regular"}</strong>
 				</p>
-				<input
-					id="name"
-					type="text"
-					name="name"
-					placeholder="Full Name:"
-					value={guest.values.name}
-					onChange={guest.handleChange}
-					onBlur={guest.handleBlur}
-				/>
-				<p className="error">{guest.touched.name && guest.errors.name && guest.errors.name}</p>
-				<input
-					id="email"
-					type="email"
-					name="email"
-					placeholder="Mail"
-					value={guest.values.email}
-					onBlur={guest.handleBlur}
-					onChange={guest.handleChange}
-				/>
+				<div className="input_wrapper">
+					<div>
+						<label htmlFor="name" className="placeholder">
+							Full Name: &nbsp;
+						</label>
+						<input
+							id="name"
+							type="text"
+							name="name"
+							value={guest.values.name}
+							onChange={guest.handleChange}
+							onBlur={guest.handleBlur}
+						/>
+					</div>
+					<p className="error">{guest.touched.name && guest.errors.name && guest.errors.name}</p>
+				</div>
+				<div className="input_wrapper">
+					<div>
+						<label htmlFor="email" className="placeholder">
+							Email: &nbsp;
+						</label>
+						<input
+							id="email"
+							type="email"
+							name="email"
+							value={guest.values.email}
+							onBlur={guest.handleBlur}
+							onChange={guest.handleChange}
+						/>
+					</div>
+				</div>
+
 				<p className="error">{guest.touched.email && guest.errors.email && guest.errors.email}</p>
 			</form>
 		</li>

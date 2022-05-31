@@ -2,8 +2,9 @@
 
 .payment {
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	margin-block-end: 2rem;
+	gap: 2rem;
 	label {
 		min-width: 6rem;
 		width: fit-content;
@@ -33,4 +34,8 @@
 		border: none;
 		color: $bg-color;
 	}
+}
+.credit_wrapper {
+	width: 75%;
+	justify-self: center;
 }

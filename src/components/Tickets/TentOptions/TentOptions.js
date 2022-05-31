@@ -6,15 +6,12 @@ import * as Yup from "yup";
 
 import TentOptionsModal from "./TentOptionsModal/TentOptionsModal";
 
-function TentOptions() {
+function TentOptions({ guestsValid, setGuestsValid }) {
 	const [modalOpen, setModalOpen] = useState(false);
 	const { order, setOrder } = useContext(OrderContext);
 
 	// State for keeping track of first mount
 	const [firstMount, setFirstMount] = useState(true);
-
-	//Used for setting tent options to be or not disabled
-	const [guestsValid, setGuestsValid] = useState(true);
 
 	const [tentsToChoose, setTentsToChoose] = useState(0);
 

@@ -72,18 +72,17 @@ fieldset {
 }
 
 input {
-	width: inherit;
 	border: none;
-	border-bottom: solid $border-color $border-thickness;
 	padding-block-end: 0.2rem;
+
+	&:focus {
+		border: none;
+		outline: none;
+	}
 }
 
 label {
 	cursor: pointer;
-}
-
-.input_wrapper {
-	margin-block-end: 0.8rem;
 }
 
 .section_p {
@@ -187,4 +186,19 @@ input[type="checkbox"] {
 .radio_label:before {
 	color: $disabled-color;
 	border-color: $disabled-color;
+	cursor: default;
+}
+
+//! ERROR MESSAGES
+.error {
+	font-size: calc($tiny/1.1);
+
+	text-align: left;
+	display: inline-block;
+	height: 2ch;
+	color: rgb(245, 28, 28);
+
+	&:not(:last-child) {
+		margin-block-end: 0.85rem;
+	}
 }

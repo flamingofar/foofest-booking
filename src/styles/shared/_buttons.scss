@@ -19,6 +19,10 @@
 	background-color: $bg-color;
 
 	border: $border-color $border-thickness solid;
+	cursor: pointer;
+	&.pay {
+		width: 100%;
+	}
 
 	@include mixins.md {
 		transition: 200ms;
@@ -26,6 +30,19 @@
 			background-color: $primary-color;
 			color: white;
 		}
+	}
+}
+
+.cta-main {
+	background: $primary-color;
+	border-color: $primary-color;
+	color: $bg-color;
+	transition: 200ms;
+
+	&:hover {
+		background-color: $bg-color;
+		color: $primary-color;
+		border-color: $primary-color;
 	}
 }
 

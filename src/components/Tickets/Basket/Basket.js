@@ -1,10 +1,10 @@
 import "./_Basket.scss";
 import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
-import { OrderContext } from "../../context/Tickets";
+import { OrderContext } from "../../../context/Tickets";
 import { useWindowWidth } from "@react-hook/window-size";
 
-function Basket({ linkActive }) {
+function Basket({ linkActive, guestsValid, setGuestsValid }) {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isMobile, setIsMobile] = useState(false);
 	const windowWidth = useWindowWidth();
@@ -16,8 +16,6 @@ function Basket({ linkActive }) {
 	useEffect(() => {
 		windowWidth < 768 ? setIsMobile(true) : setIsMobile(false);
 		setIsOpen(false);
-
-		// console.log(windowWidth);
 	}, [windowWidth]);
 
 	return (
@@ -40,7 +38,11 @@ function Basket({ linkActive }) {
 
 			{isMobile ? isOpen && isMobile && <BasketContent /> : <BasketContent />}
 
-			<Link to={"/checkout"} className={`desktop_checkout cta ${linkActive ? "" : "disabled"}`}>
+			<Link
+				disabled={guestsValid}
+				to={"/checkout"}
+				className={`desktop_checkout cta ${guestsValid ? "disabled" : ""}`}
+			>
 				Checkout
 			</Link>
 		</section>

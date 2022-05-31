@@ -1,0 +1,29 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+
+form {
+	fieldset {
+		width: 100%;
+		display: grid;
+		gap: 1rem;
+	}
+	.input_wrapper {
+		display: flex;
+		flex-direction: column;
+
+		div {
+			display: flex;
+			border-bottom: $border-color $border-thickness solid;
+		}
+	}
+	input {
+		flex: 1;
+		width: fit-content;
+	}
+	.placeholder {
+		font-family: $secondary-font;
+		font-size: calc($tiny/1.1);
+		display: inline-block;
+		color: rgb(145, 144, 144);
+	}
+}
