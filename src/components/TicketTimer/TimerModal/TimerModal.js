@@ -7,6 +7,10 @@ function TimerModal() {
 			<div>
 				<div>
 					<h5>Your reservation is now invalid</h5>
+					<p>
+						Please go back to start and make a new reservation, or go and see the lineup and
+						shcedule.
+					</p>
 				</div>
 				<div>
 					<Link to={"/"} className="cta">

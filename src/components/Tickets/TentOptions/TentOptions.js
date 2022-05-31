@@ -4,7 +4,10 @@ import { OrderContext } from "../../../context/Tickets";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+import TentOptionsModal from "./TentOptionsModal/TentOptionsModal";
+
 function TentOptions() {
+	const [modalOpen, setModalOpen] = useState(false);
 	const { order, setOrder } = useContext(OrderContext);
 
 	// State for keeping track of first mount
@@ -244,6 +247,16 @@ function TentOptions() {
 					</label>
 				</fieldset>
 			</fieldset>
+
+			<p
+				id="modal_link"
+				onClick={() => {
+					setModalOpen(!modalOpen);
+				}}
+			>
+				Read about the options
+			</p>
+			{modalOpen ? <TentOptionsModal modalOpen={modalOpen} setModalOpen={setModalOpen} /> : null}
 		</section>
 	);
 }

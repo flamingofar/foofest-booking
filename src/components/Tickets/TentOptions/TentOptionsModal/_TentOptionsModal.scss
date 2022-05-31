@@ -1,7 +1,7 @@
-@use "../../../styles/abstracts/variables" as *;
-@use "../../../styles/abstracts/mixins";
+@use "../../../../styles/abstracts/variables" as *;
+@use "../../../../styles/abstracts/mixins";
 
-.modal {
+#tent_modal {
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -16,30 +16,36 @@
 	z-index: 999;
 
 	& > div {
+		position: relative;
 		width: 80vw;
 		border: $border-color ($border-thickness * 2) solid;
 		padding: 1rem;
 		background-color: #fff;
-		& > div:first-child {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			font-size: 2rem;
-			text-align: center;
-			p {
-				font-family: $secondary-font;
-				text-align: center;
+
+		h5 {
+			font-size: $medium;
+			margin-block-end: 1rem;
+		}
+
+		p {
+			text-align: start;
+
+			&:not(:last-child) {
+				margin-block-end: 1rem;
 			}
 		}
-		& > div:last-child {
-			display: flex;
-			gap: 0.3rem;
-		}
 	}
+	.modal_close {
+		cursor: pointer;
+		position: absolute;
+		top: 0.5rem;
+		right: 0.5rem;
 
-	a {
-		font-size: 1.5rem;
+		width: 1.5rem;
+		svg {
+			width: 100%;
+			height: auto;
+		}
 	}
 
 	@include mixins.md {

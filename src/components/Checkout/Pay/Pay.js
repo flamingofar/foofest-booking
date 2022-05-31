@@ -15,10 +15,10 @@ function Pay({ formik }) {
 					value="mobilepay"
 					id="mobilepay"
 					name="paymentMethod"
-					defaultChecked
 					onChange={formik.handleChange}
 				/>
 				<input
+					defaultChecked
 					type="radio"
 					value="creditcard"
 					id="creditcard"

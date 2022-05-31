@@ -33,7 +33,7 @@ function Checkout() {
 			street: "",
 			city: "",
 			zip: "",
-			paymentMethod: "mobilepay",
+			paymentMethod: "creditcard",
 			cardnumber: "",
 			exp: "",
 			cvc: "",

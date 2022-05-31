@@ -13,7 +13,7 @@
 		font-size: 1.5rem;
 	}
 
-	p:last-child {
+	& > p:last-child {
 		color: $text-color;
 	}
 
