@@ -122,13 +122,6 @@ div:disabled {
 	}
 }
 
-.cta.disabled,
-.disabled {
-	color: $disabled-color;
-	border: $disabled-color $border-thickness solid;
-	pointer-events: none;
-}
-
 .card_disabled {
 	color: $disabled-color;
 	pointer-events: none;

@@ -13,10 +13,11 @@
 	text-transform: uppercase;
 	padding: 1rem;
 	text-decoration: none;
-	color: #000;
 	font-size: $medium;
 
-	background-color: $bg-color;
+	color: $bg-color;
+	background-color: $primary-color;
+	border-color: $primary-color;
 
 	border: $border-color $border-thickness solid;
 	cursor: pointer;
@@ -27,8 +28,9 @@
 	@include mixins.md {
 		transition: 200ms;
 		&:hover {
-			background-color: $primary-color;
-			color: white;
+			background-color: $bg-color;
+			color: $primary-color;
+			border-color: $primary-color;
 		}
 	}
 }
@@ -57,4 +59,12 @@
 .mobile,
 .desktop_checkout {
 	width: auto;
+}
+
+.cta.disabled,
+.disabled {
+	color: $disabled-color;
+	border: gray $border-thickness solid;
+	pointer-events: none;
+	background-color: gray;
 }
