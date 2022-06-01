@@ -6,10 +6,34 @@
 	display: grid;
 	grid-template-columns:
 		minmax(1rem, 1fr)
-		minmax(auto, 1000px)
+		minmax(auto, 600px)
 		minmax(1rem, 1fr);
 	gap: 0;
 	background-color: #fff;
+
+	h4 {
+		font-family: $secondary-font;
+		font-weight: 400;
+		span {
+			font-weight: 700;
+		}
+	}
+
+	#guests {
+		li {
+			padding-inline-start: 1.8rem;
+			font-size: $small;
+			justify-content: flex-start;
+
+			&:first-child {
+				padding-block-start: 0.5rem;
+			}
+		}
+		span {
+			display: block;
+			position: static;
+		}
+	}
 
 	section {
 		padding: 0;
@@ -89,7 +113,7 @@
 			position: relative;
 			display: flex;
 			justify-content: space-between;
-			span {
+			& > span {
 				background: transparent;
 				position: absolute;
 				bottom: 0;

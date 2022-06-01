@@ -30,13 +30,30 @@ function Confirmation() {
 						We can’t wait to FooFest with you!
 					</h1>
 					<p>Heres's your order confirmation: </p>
-					<div className="confirmation_order">
-						<h4>
-							Reservation Number:{" "}
+					<h4>
+						Reservation Number:{" "}
+						<span>
 							{location.state.reservationNr !== null
 								? location.state.reservationNr
 								: "No Reservation Number Found"}
-						</h4>
+						</span>
+					</h4>
+					<div className="confirmation_order">
+						{order.guests === [] ? null : (
+							<ul id="guests">
+								Guests:
+								{order.guests.map((guest, idx) => {
+									return (
+										<li>
+											<div>
+												<span> {guest.name}</span>
+												<span>{guest.email}</span>
+											</div>
+										</li>
+									);
+								})}
+							</ul>
+						)}
 						<ul>
 							<li>
 								<div>

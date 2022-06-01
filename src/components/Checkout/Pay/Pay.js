@@ -45,10 +45,11 @@ function Pay({ formik }) {
 			<div className="credit_wrapper">
 				<div className="input_wrapper">
 					<div>
-						<label htmlFor="email" className="placeholder">
+						<label htmlFor="cardnumber" className="placeholder">
 							Card Number: &nbsp;
 						</label>
 						<NumberFormat
+							allowEmptyFormatting
 							disabled={formik.values.paymentMethod !== "creditcard" ? true : false}
 							className={
 								formik.values.paymentMethod === "mobilepay" ||
@@ -77,10 +78,11 @@ function Pay({ formik }) {
 				<div className="double_input">
 					<div className="input_wrapper">
 						<div>
-							<label htmlFor="email" className="placeholder">
+							<label htmlFor="exp" className="placeholder">
 								EXP: &nbsp;
 							</label>
 							<NumberFormat
+								allowEmptyFormatting
 								disabled={formik.values.paymentMethod !== "creditcard" ? true : false}
 								className={
 									formik.values.paymentMethod === "mobilepay" ||
@@ -108,10 +110,11 @@ function Pay({ formik }) {
 
 					<div className="input_wrapper">
 						<div>
-							<label htmlFor="email" className="placeholder">
+							<label htmlFor="cvc" className="placeholder">
 								CVC: &nbsp;
 							</label>
 							<NumberFormat
+								allowEmptyFormatting
 								disabled={formik.values.paymentMethod !== "creditcard" ? true : false}
 								className={
 									formik.values.paymentMethod === "mobilepay" ||
@@ -139,7 +142,7 @@ function Pay({ formik }) {
 			<button
 				type="submit"
 				className={`cta pay ${formik.isValid ? "" : "disabled"}`}
-				disabled={formik.isValid ? true : false}
+				disabled={formik.isValid ? false : true}
 			>
 				Pay
 			</button>

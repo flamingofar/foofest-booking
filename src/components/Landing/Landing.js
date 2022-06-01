@@ -6,6 +6,8 @@ import TicketInfo from "./TicketInfo/TicketInfo";
 import InfoAside from "./InfoAside/InfoAside";
 import Nav from "../Nav/Nav";
 
+import "./_Landing.scss";
+
 function Landing() {
 	const { availability, setAvailability } = useContext(AvailabilityContext);
 	const [lineUp, setLineUp] = useState([]);
@@ -34,7 +36,7 @@ function Landing() {
 	return (
 		<>
 			<Nav />
-			<main>
+			<main className="landing">
 				<TicketInfo />
 				<LineUp lineUp={lineUp} />
 				<InfoAside />

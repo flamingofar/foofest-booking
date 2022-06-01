@@ -47,7 +47,8 @@ function Checkout() {
 				.required()
 				.positive("Can't be negative numbers")
 				.integer()
-				.min(8, "Must be longer than 8"),
+				.min(8, "Must be longer than 8")
+				.required("Required"),
 			country: Yup.string().required("Required"),
 			street: Yup.string().required("Required"),
 			city: Yup.string().required("Required"),
@@ -57,35 +58,40 @@ function Checkout() {
 			cardnumber: Yup.string().when("paymentMethod", {
 				is: "creditcard",
 				then: Yup.string()
-					.test("cardnumber", "Must be 16 numbers", (val) => {
-						const val_length_without_mask = val.replace(/\s/g, "").length;
-						return val_length_without_mask === 16;
-					})
+					// .test("cardnumber", "Must be 16 numbers", (val) => {
+					// 	console.log(val);
+					// 	const val_length_without_mask = val.replace(/\s/g, "").length;
+					// 	return val_length_without_mask === 16;
+					// })
 					.required(),
 				otherwise: Yup.string().notRequired(),
 			}),
 			exp: Yup.string().when("paymentMethod", {
 				is: "creditcard",
 				then: Yup.string()
-					.test("exp", "Must be 4 numbers", (val) => {
-						const val_length_without_mask = val.replace(/[^\d]/gi, "").length;
-						return val_length_without_mask === 4;
-					})
+					// .test("exp", "Must be 4 numbers", (val) => {
+					// 	console.log(val);
+
+					// 	const val_length_without_mask = val.replace(/[^\d]/gi, "").length;
+					// 	return val_length_without_mask === 4;
+					// })
 					.required("Required"),
 				otherwise: Yup.string().notRequired(),
 			}),
 			cvc: Yup.string().when("paymentMethod", {
 				is: "creditcard",
 				then: Yup.string()
-					.required("Required")
-					.test("cvc", "Must be 3 numbers", (val) => {
-						const val_length_without_mask = val.replace(/\s/g, "").length;
-						return val_length_without_mask === 3;
-					}),
+					// .test("cvc", "Must be 3 numbers", (val) => {
+					// 	console.log(val);
+					// 	const val_length_without_mask = val.replace(/\s/g, "").length;
+					// 	return val_length_without_mask === 3;
+					// }),
+					.required("Required"),
 				otherwise: Yup.string().notRequired(),
 			}),
 		}),
-		onSubmit: () => {
+		onSubmit: (values) => {
+			console.log(values);
 			const body = {
 				id: reservationNr,
 			};
@@ -187,9 +193,9 @@ function Checkout() {
 			<Nav />
 			<TicketTimer timeStamp={time} timeoutDone={timeoutDone} setTimeoutDone={setTimeoutDone} />
 			{timeoutDone && <TimerModal />}
-			<main className="checkout" onSubmit={formik.handleSubmit}>
+			<main className="checkout">
 				<InfoPane />
-				<form>
+				<form onSubmit={formik.handleSubmit}>
 					<ContactInfo formik={formik} />
 					<Address formik={formik} />
 					<Pay formik={formik} />
