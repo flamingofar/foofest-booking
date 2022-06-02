@@ -141,7 +141,7 @@ function BasketContent() {
 					<li>
 						<div>
 							<p>Green Camping</p>
-							<span>299,-</span>
+							<span>249,-</span>
 						</div>
 						<p>249,-</p>
 					</li>

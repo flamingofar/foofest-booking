@@ -2,7 +2,6 @@ import "./_ContactInfo.scss";
 import { useFormikContext } from "formik";
 
 function ContactInfo({ formik }) {
-	console.log(formik);
 	return (
 		<fieldset className="section_p">
 			<h2>Who's placing the order?</h2>

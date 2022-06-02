@@ -10,7 +10,6 @@ function Area() {
 	const { order, setOrder } = useContext(OrderContext);
 	const ticketAmount = order.vip + order.regular;
 
-	console.log(availability);
 	//Object.values returns an array so we can use reduce method
 
 	const formik = useFormik({
@@ -20,13 +19,11 @@ function Area() {
 	});
 
 	useEffect(() => {
-		// console.log(formik);
 		setOrder((prev) => {
 			const copy = { ...prev };
 			copy.area = formik.values.area;
 			return copy;
 		});
-		console.log(order);
 	}, [formik.values.area]);
 
 	return (

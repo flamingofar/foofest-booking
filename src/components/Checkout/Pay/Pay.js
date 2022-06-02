@@ -2,10 +2,6 @@ import "./_Pay.scss";
 import { useEffect } from "react";
 import NumberFormat from "react-number-format";
 function Pay({ formik }) {
-	useEffect(() => {
-		console.log(formik);
-	}, [formik]);
-
 	return (
 		<fieldset className="section_p">
 			<h2>How are you paying?</h2>

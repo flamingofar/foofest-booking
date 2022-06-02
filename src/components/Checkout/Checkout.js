@@ -19,7 +19,7 @@ import * as Yup from "yup";
 function Checkout() {
 	const navigate = useNavigate();
 	const { order, setOrder } = useContext(OrderContext);
-	const [time, setTime] = useState(240000);
+	const [time, setTime] = useState(600000);
 	const [timeoutDone, setTimeoutDone] = useState(false);
 	const [reservationNr, setReservationNr] = useState("");
 	const [response, setResponse] = useState("");
@@ -59,7 +59,6 @@ function Checkout() {
 				is: "creditcard",
 				then: Yup.string()
 					// .test("cardnumber", "Must be 16 numbers", (val) => {
-					// 	console.log(val);
 					// 	const val_length_without_mask = val.replace(/\s/g, "").length;
 					// 	return val_length_without_mask === 16;
 					// })
@@ -70,7 +69,6 @@ function Checkout() {
 				is: "creditcard",
 				then: Yup.string()
 					// .test("exp", "Must be 4 numbers", (val) => {
-					// 	console.log(val);
 
 					// 	const val_length_without_mask = val.replace(/[^\d]/gi, "").length;
 					// 	return val_length_without_mask === 4;
@@ -82,7 +80,6 @@ function Checkout() {
 				is: "creditcard",
 				then: Yup.string()
 					// .test("cvc", "Must be 3 numbers", (val) => {
-					// 	console.log(val);
 					// 	const val_length_without_mask = val.replace(/\s/g, "").length;
 					// 	return val_length_without_mask === 3;
 					// }),
@@ -91,7 +88,6 @@ function Checkout() {
 			}),
 		}),
 		onSubmit: (values) => {
-			console.log(values);
 			const body = {
 				id: reservationNr,
 			};
@@ -105,7 +101,6 @@ function Checkout() {
 					body: JSON.stringify(body),
 				});
 				const response = await settings.json();
-				console.log(response);
 				await setResponse(response.message);
 			};
 			fullfillReservation();
@@ -128,7 +123,7 @@ function Checkout() {
 			setResponse("");
 			navigate("/confirmation", { state: { reservationNr: reservationNr } });
 		} else {
-			console.log("NOPE");
+			// console.log("NOPE");
 		}
 	}, [response]);
 
@@ -146,7 +141,6 @@ function Checkout() {
 				body: JSON.stringify(body),
 			});
 			const response = await settings.json();
-			console.log(response);
 		};
 
 		const putReservation = async () => {
@@ -185,7 +179,6 @@ function Checkout() {
 		});
 
 		const res = await JSONData.json();
-		console.log(res);
 	};
 
 	return (
