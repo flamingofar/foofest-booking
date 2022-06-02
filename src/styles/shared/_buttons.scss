@@ -54,7 +54,14 @@
 
 	background-color: $bg-color;
 
+	cursor: pointer;
+
 	border: $border-color ($border-thickness * 2) solid;
+	&.disabled {
+		border: $disabled-color solid $border-thickness;
+		background-color: $bg-color;
+		color: $disabled-color;
+	}
 }
 .mobile,
 .desktop_checkout {

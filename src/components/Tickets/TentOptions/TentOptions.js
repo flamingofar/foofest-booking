@@ -203,11 +203,21 @@ function TentOptions({ guestsValid, setGuestsValid }) {
 					className="crew"
 					disabled={tentOptions.values.tent_option === "own" ? true : false}
 				>
-					<button className="choice_btn" onClick={handleTwoPersonTent}>
+					<button
+						className={`choice_btn ${order.crewTents.twoPerson === 0 ? "disabled" : ""}`}
+						onClick={handleTwoPersonTent}
+					>
 						-
 					</button>
 					<p>{order.crewTents.twoPerson}</p>
-					<button className="choice_btn" onClick={handleTwoPersonTent}>
+					<button
+						className={`choice_btn ${
+							order.crewTents.twoPerson + order.crewTents.threePerson === order.guests.length
+								? "disabled"
+								: ""
+						}`}
+						onClick={handleTwoPersonTent}
+					>
 						+
 					</button>
 
@@ -219,11 +229,21 @@ function TentOptions({ guestsValid, setGuestsValid }) {
 					className="crew"
 					disabled={tentOptions.values.tent_option === "own" ? true : false}
 				>
-					<button className="choice_btn" onClick={handleThreePersonTent}>
+					<button
+						className={`choice_btn ${order.crewTents.threePerson === 0 ? "disabled" : ""}`}
+						onClick={handleThreePersonTent}
+					>
 						-
 					</button>
 					<p>{order.crewTents.threePerson}</p>
-					<button className="choice_btn" onClick={handleThreePersonTent}>
+					<button
+						className={`choice_btn ${
+							order.crewTents.twoPerson + order.crewTents.threePerson === order.guests.length
+								? "disabled"
+								: ""
+						}`}
+						onClick={handleThreePersonTent}
+					>
 						+
 					</button>
 
