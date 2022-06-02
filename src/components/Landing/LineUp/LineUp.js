@@ -13,7 +13,7 @@ function LineUp({ lineUp }) {
 					);
 				})}
 				<a className="cta" href="https://foofestapp.netlify.app/" target="_blank">
-					SCHEDULE{" "}
+					To Festival App
 					<span>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"

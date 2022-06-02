@@ -49,11 +49,13 @@
 		span {
 			margin-inline-start: 0.6rem;
 			display: inline-block;
-			width: 2.7rem;
+			width: 1.5rem;
 			font-size: 2rem;
 			vertical-align: middle;
+			background-color: inherit;
 		}
 		svg {
+			background-color: $primary-color;
 			width: 100%;
 			height: auto;
 		}

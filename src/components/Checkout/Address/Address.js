@@ -6,7 +6,7 @@ function Address({ formik }) {
 			<h2>Where do you live?</h2>
 			<div className="input_wrapper">
 				<div>
-					<label htmlFor="email" className="placeholder">
+					<label htmlFor="country" className="placeholder">
 						Country: &nbsp;
 					</label>
 					<input
@@ -24,7 +24,7 @@ function Address({ formik }) {
 			</div>
 			<div className="input_wrapper">
 				<div>
-					<label htmlFor="email" className="placeholder">
+					<label htmlFor="text" className="placeholder">
 						Streetname & No.: &nbsp;
 					</label>
 					<input
@@ -45,7 +45,7 @@ function Address({ formik }) {
 			<div className="double_input">
 				<div className="input_wrapper">
 					<div>
-						<label htmlFor="email" className="placeholder">
+						<label htmlFor="city" className="placeholder">
 							City: &nbsp;
 						</label>
 						<input
@@ -61,7 +61,7 @@ function Address({ formik }) {
 				</div>
 				<div className="input_wrapper">
 					<div>
-						<label htmlFor="email" className="placeholder">
+						<label htmlFor="zip" className="placeholder">
 							Zip Code: &nbsp;
 						</label>
 						<input

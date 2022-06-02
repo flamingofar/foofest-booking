@@ -7,6 +7,13 @@
 	}
 	fieldset {
 		width: 100%;
+		padding-inline: 1rem;
+		padding-block: 1rem;
+
+		@include mixins.md {
+			padding-inline: 4rem;
+			padding-block: 1rem;
+		}
 	}
 	& fieldset:not(:last-child) {
 		border-bottom: $border-color $border-thickness solid;

@@ -79,13 +79,13 @@ input {
 	}
 }
 
+.section_p {
+	padding-inline: 1.5rem;
+}
+
 // label {
 // 	cursor: pointer;
 // }
-
-.section_p {
-	padding: 2rem 1.6rem;
-}
 
 .tent_option:disabled h2 {
 	background-color: $disabled-color;
